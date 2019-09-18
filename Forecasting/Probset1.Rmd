@@ -1,20 +1,35 @@
-getwd()
+---
+title: "Probset1"
+author: "Sherry PENG Tian"
+date: "9/17/2019"
+output: html_document
+---
 
-# Clear the workspace
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r packages}
 rm(list = ls()) # Clear environment
 gc()            # Clear unused memory
 cat("\f")       # Clear the console
 
 library(ggplot2)
 library(fpp2)
-
-# 2.10.1 
+summary(cars)
+```
+# Hyndman Book Chapter 2.10 
+### 2.10.1 
+```{r #1 data, echo=TRUE}
 ?gold
-# Daily morning gold prices in US dollars. 1 January 1985 – 31 March 1989.
 ?woolyrnq
-# Quarterly production of woollen yarn in Australia: tonnes. Mar 1965 – Sep 1994.
 ?gas
-# Australian monthly gas production: 1956–1995.
+```
+Gold: Daily morning gold prices in US dollars. 1 January 1985 – 31 March 1989.
+Wood: Quarterly production of woollen yarn in Australia: tonnes. Mar 1965 – Sep 1994.
+Gas: Australian monthly gas production: 1956–1995. 
+
+```{r #1 plot, echo=TRUE}
 autoplot(gold)
 autoplot(woolyrnq)
 autoplot(gas)
@@ -25,8 +40,10 @@ frequency(gas)
 which.max(gold)
 which.max(woolyrnq)
 which.max(gas)
+```
 
-# 2.10.2
+# 2.10.2 
+```{r #2 plot, echo=TRUE}
 # a. 
 tute1 <- read.csv("/Users/apple/Downloads/tute1.csv", header = TRUE)
 # b. 
@@ -34,8 +51,10 @@ mytimeseries <- ts(tute1[,-1], start = 1981, frequency = 4)
 # The [,-1] removes the first column which contains the quarters. 
 # c. 
 autoplot(mytimeseries, facets = TRUE)
+``` 
 
 # 2.10.3
+```{r #3 plot, echo=TRUE}
 # a. 
 retaildata <- readxl::read_excel("/Users/apple/Downloads/retail.xlsx", skip = 1)
 # skip=1 is required because the Excel sheet has two header rows 
@@ -50,8 +69,10 @@ ggseasonplot(myts)
 ggsubseriesplot(myts)   # might be the best
 gglagplot(myts)
 ggAcf(myts)
+```
 
-# 2.10.4
+# 2.10.4 
+```{r #4 plot, echo=TRUE}
 # ?????? time plots of following time series? 
 help(bicoal)
 autoplot(bicoal)
@@ -80,8 +101,10 @@ autoplot(fancy)
 
 help(a10)
 autoplot(h02)
+``` 
 
 # 2.10.5
+```{r #5 plot, echo=TRUE}
 ggseasonplot(writing)
 ggseasonplot(fancy)
 ggseasonplot(a10)
@@ -92,8 +115,10 @@ ggsubseriesplot(fancy)
 ggsubseriesplot(a10)
 ggsubseriesplot(h02)
 # ????? Unusual years and seasonal patterns 
+```
 
 # 2.10.6 
+```{r #6 plot, echo=TRUE}
 autoplot(hsales)
 ggseasonplot(hsales)
 ggsubseriesplot(hsales)
@@ -126,8 +151,11 @@ ggseasonplot(gasoline)
 ggsubseriesplot(gasoline)
 gglagplot(gasoline)
 ggAcf(gasoline)
+```
 
-# 2.10.7
+# 10.2.7 
+```{r #7 plot, echo=TRUE}
 autoplot(arrivals)
 ggseasonplot(arrivals)
 ggsubseriesplot(arrivals)
+```
