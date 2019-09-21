@@ -3,6 +3,7 @@ title: "Probset1"
 author: "Sherry PENG Tian"
 date: "9/17/2019"
 output: html_document
+self_contained: no
 ---
 
 ```{r setup, include=FALSE}
@@ -30,14 +31,18 @@ Wood: Quarterly production of woollen yarn in Australia: tonnes. Mar 1965 – Se
 Gas: Australian monthly gas production: 1956–1995. 
 
 ```{r #1 plot, echo=TRUE}
+# a. 
 autoplot(gold)
 autoplot(woolyrnq)
 autoplot(gas)
 
+# b. 
 frequency(gold)
 frequency(woolyrnq)
 frequency(gas)
-which.max(gold)
+
+# c. 
+which.max(gold)   # 770 is the highest outlier in the plot. 
 which.max(woolyrnq)
 which.max(gas)
 ```
@@ -51,7 +56,10 @@ mytimeseries <- ts(tute1[,-1], start = 1981, frequency = 4)
 # The [,-1] removes the first column which contains the quarters. 
 # c. 
 autoplot(mytimeseries, facets = TRUE)
+# Alternatively, 
+autoplot(mytimeseries)
 ``` 
+When not including facets = TRUE in the autoplot(), multiple time series will be faceted (and unless specified, colour is set to FALSE). If FALSE, each series will be assigned a colour, which means each column is plotted seperated in a different color when using autoplot(), and the scale will not be changed into the same "dimension". 
 
 # 2.10.3
 ```{r #3 plot, echo=TRUE}
@@ -70,36 +78,52 @@ ggsubseriesplot(myts)   # might be the best
 gglagplot(myts)
 ggAcf(myts)
 ```
+Q: Can you spot any seasonality, cyclicity and trend? What do you learn about the series?
+A: The trend is growing overall but keeps dropping around 2009. There is a strong seasonality every year that December has the highest growth and max "sales(might be)", while other months roughly stay the same. The cyclicity appears after 2010, which indicates the business cycle might enter the recession phase. 
 
 # 2.10.4 
-```{r #4 plot, echo=TRUE}
+```{r #4 first, echo=TRUE}
 # ?????? time plots of following time series? 
 help(bicoal)
+# Annual bituminous coal production in the USA: 1920–1968.
 autoplot(bicoal)
 
 help(chicken)
+# Price of chicken in US (constant dollars): 1924–1993.
 autoplot(chicken)
 
 help(dole)
+# Monthly total of people on unemployment benefits in Australia (Jan 1965 – Jul 1992).
 autoplot(dole)
 
-help(usdealths)
-autoplot(usdealths)
+help(usdeaths)
+# Monthly accidental deaths in USA.
+autoplot(usdeaths)
 
 help(lynx)
+# Annual Canadian Lynx trappings 1821-1934. 
 autoplot(lynx)
-# Seasonality of around 40 years in a big run and every 5 years of the smaller seasonality. 
+```
+Seasonality of around 40 years in a big run and every 5 years of the smaller seasonality. 
 
+```{r #4 second, echo=TRUE}
 help("goog")
+# Closing stock prices of GOOG from the NASDAQ exchange, for 1000 consecutive trading days between 25 February 2013 and 13 February 2017. Adjusted for splits. goog200 contains the first 200 observations from goog.
+
 autoplot(goog) + ylab("Stock Price in Dollars $") + ggtitle("Google Stock")
 
 help(writing)
+# Industry sales for printing and writing paper (in thousands of French francs): Jan 1963 – Dec 1972.
 autoplot(writing)
 
 help(fancy)
+# Monthly sales for a souvenir shop on the wharf at a beach resort town in Queensland, Australia.
 autoplot(fancy)
 
 help(a10)
+# Monthly anti-diabetic drug sales in Australia from 1991 to 2008.
+# Total monthly scripts for pharmaceutical products falling under ATC code A10, as recorded by the Australian Health Insurance Commission. July 1991 - June 2008.
+
 autoplot(h02)
 ``` 
 
@@ -114,10 +138,16 @@ ggsubseriesplot(writing)
 ggsubseriesplot(fancy)
 ggsubseriesplot(a10)
 ggsubseriesplot(h02)
-# ????? Unusual years and seasonal patterns 
 ```
+Q: What can you say about the seasonal patterns? Can you identify any unusual years?
+A: *writing*: There is a strong seasonality occuring in August with a huge drop every year, and also it stays roughly grwoing from Jan. to Mar and then drops to Apr. growing to Jun; and then roughly the same after Sept. There isn't an obviously unusally year. 
+    *fancy*: There is a relatively strong seasanality occuring from November to December every end of the year of growth. But I fail to notice any unusual year other than 1993 that there is also a peak in March and the growth in December is enemorous. 
+    *a10*: There is a strong seasonality that every year it starts high in Jan. and then drop in Feb. and then grow slowly in the rest of the years. However, 2008 appears to be the unusual year that there is no clear pattern and the dataset stops in the middle. 
+    *h02*: There is a strong seasonality that every year the growth starts around Feburary and then grow at a relatively satisfying rate till the Jan. of the next year. The unusual years might be 1991 that the data starts after July and 2008 that the data ends around June. 
 
 # 2.10.6 
+Question: Can you spot any seasonality, cyclicity and trend?
+
 ```{r #6 plot, echo=TRUE}
 autoplot(hsales)
 ggseasonplot(hsales)
@@ -132,6 +162,7 @@ ggseasonplot(usdeaths)
 ggsubseriesplot(usdeaths)
 gglagplot(usdeaths)
 ggAcf(usdeaths)
+# Seasonality with a peak in July. 
 
 autoplot(bricksq)
 ggseasonplot(bricksq)
@@ -141,21 +172,24 @@ ggAcf(bricksq)
 # Trend of growth overall; seasonality before 1975s every year; cyclical pattern similar to business cycles not in fixed time periods. 
 
 autoplot(sunspotarea)
-ggseasonplot(sunspotarea)
-ggsubseriesplot(sunspotarea)
+#ggseasonplot(sunspotarea)
+#ggsubseriesplot(sunspotarea)
 gglagplot(sunspotarea)
 ggAcf(sunspotarea)
+# There is no strong seasonality (very interesting that the system code tells me there isn't); however, there might be a cyclinal pattern with three periods. 
 
 autoplot(gasoline)
 ggseasonplot(gasoline)
-ggsubseriesplot(gasoline)
+#ggsubseriesplot(gasoline)
 gglagplot(gasoline)
 ggAcf(gasoline)
+# There is no show of seasonality or cyclicity but there is a growth trend from 1990 to 2005, and then the gasoline amounts flutate roughly around a level. 
 ```
 
 # 10.2.7 
-```{r #7 plot, echo=TRUE}
+```{r #7 seasonal plot, echo=TRUE}
 autoplot(arrivals)
-ggseasonplot(arrivals)
-ggsubseriesplot(arrivals)
+#ggseasonplot(arrivals)
+#ggsubseriesplot(arrivals)
+
 ```
