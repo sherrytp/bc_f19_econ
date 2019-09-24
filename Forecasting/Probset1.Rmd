@@ -17,6 +17,7 @@ cat("\f")       # Clear the console
 
 library(ggplot2)
 library(fpp2)
+library(cowplot)
 summary(cars)
 ```
 # Hyndman Book Chapter 2.10 
@@ -50,7 +51,7 @@ which.max(gas)
 # 2.10.2 
 ```{r #2 plot, echo=TRUE}
 # a. 
-tute1 <- read.csv("/Users/apple/Downloads/tute1.csv", header = TRUE)
+tute1 <- read.csv("tute1.csv", header = TRUE)
 # b. 
 mytimeseries <- ts(tute1[,-1], start = 1981, frequency = 4)
 # The [,-1] removes the first column which contains the quarters. 
@@ -64,7 +65,7 @@ When not including facets = TRUE in the autoplot(), multiple time series will be
 # 2.10.3
 ```{r #3 plot, echo=TRUE}
 # a. 
-retaildata <- readxl::read_excel("/Users/apple/Downloads/retail.xlsx", skip = 1)
+retaildata <- readxl::read_excel("retail.xlsx", skip = 1)
 # skip=1 is required because the Excel sheet has two header rows 
 samplets <- ts(retaildata[, "A3349873A"], 
                frequency = 12, start = c(1982, 4))
@@ -180,7 +181,7 @@ ggAcf(sunspotarea)
 
 autoplot(gasoline)
 ggseasonplot(gasoline)
-#ggsubseriesplot(gasoline)
+#ggsubseriesplot(gasoline[,1])
 gglagplot(gasoline)
 ggAcf(gasoline)
 # There is no show of seasonality or cyclicity but there is a growth trend from 1990 to 2005, and then the gasoline amounts flutate roughly around a level. 
@@ -189,7 +190,19 @@ ggAcf(gasoline)
 # 10.2.7 
 ```{r #7 seasonal plot, echo=TRUE}
 autoplot(arrivals)
-#ggseasonplot(arrivals)
-#ggsubseriesplot(arrivals)
-
+japan1 <- ggseasonplot(arrivals[,1])
+nz1 <- ggseasonplot(arrivals[,2])
+uk1 <- ggseasonplot(arrivals[,3])
+us1 <- ggseasonplot(arrivals[,4])
+plot_grid(japan1, nz1, uk1, us1 
+          , labels = c("Japan", "NZ", "UK", "US")
+          , nrow = 1) 
+japan2 <- ggsubseriesplot(arrivals[,1])
+nz2 <- ggsubseriesplot(arrivals[,2])
+uk2 <- ggsubseriesplot(arrivals[,3])
+us2 <- ggsubseriesplot(arrivals[,4])
+plot_grid(japan2, nz2, uk2, us2
+          , labels = c("Japan", "NZ", "UK", "US")
+          , nrow = 1
+          )
 ```
