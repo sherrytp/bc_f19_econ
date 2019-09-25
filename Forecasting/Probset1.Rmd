@@ -51,7 +51,7 @@ which.max(gas)
 # 2.10.2 
 ```{r #2 plot, echo=TRUE}
 # a. 
-tute1 <- read.csv("tute1.csv", header = TRUE)
+tute1 <- read.csv("/Users/apple/Desktop/bc_f19_econ/Forecasting/Probset1_files/tute1.csv", header = TRUE)
 # b. 
 mytimeseries <- ts(tute1[,-1], start = 1981, frequency = 4)
 # The [,-1] removes the first column which contains the quarters. 
@@ -65,7 +65,7 @@ When not including facets = TRUE in the autoplot(), multiple time series will be
 # 2.10.3
 ```{r #3 plot, echo=TRUE}
 # a. 
-retaildata <- readxl::read_excel("retail.xlsx", skip = 1)
+retaildata <- readxl::read_excel("/Users/apple/Desktop/bc_f19_econ/Forecasting/Probset1_files/retail.xlsx", skip = 1)
 # skip=1 is required because the Excel sheet has two header rows 
 samplets <- ts(retaildata[, "A3349873A"], 
                frequency = 12, start = c(1982, 4))
