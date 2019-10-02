@@ -53,3 +53,13 @@ goog200 %>%
 e^2 %>% mean(na.rm = TRUE) %>% sqrt 
 goog200 %>% rwf(drift = TRUE) %>% residuals -> res 
 res^2 %>% mean(na.rm = TRUE, h = 1)
+
+library(ggplot2)
+# Grouped
+value <- School$Registered
+ggplot(School, aes(fill=condition, y=value, x=School)) + 
+  geom_bar(position="dodge", stat="identity")
+# Stacked
+ggplot(School, aes(fill=condition, y=value, x=School)) + 
+  geom_bar(position="stack", stat="identity")
+

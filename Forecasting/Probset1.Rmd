@@ -2,8 +2,9 @@
 title: "Probset1"
 author: "Sherry PENG Tian"
 date: "9/17/2019"
-output: html_document
-self_contained: no
+output: 
+  html_document: 
+      number_sections: TRUE 
 ---
 
 ```{r setup, include=FALSE}

@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Sherry PENG Tian" />
+
+
+<title>Probset1</title>
+
+<script src="Probset1_files/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="Probset1_files/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="Probset1_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="Probset1_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="Probset1_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="Probset1_files/navigation-1.1/tabsets.js"></script>
+<link href="Probset1_files/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="Probset1_files/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Probset1</h1>
+<h4 class="author">Sherry PENG Tian</h4>
+<h4 class="date">9/17/2019</h4>
+
+</div>
+
+
+<pre class="r"><code>rm(list = ls()) # Clear environment
+gc()            # Clear unused memory</code></pre>
+<pre><code>##          used (Mb) gc trigger (Mb) limit (Mb) max used (Mb)
+## Ncells 460358 24.6    1000012 53.5         NA   630591 33.7
+## Vcells 897455  6.9    8388608 64.0      16384  1767236 13.5</code></pre>
+<pre class="r"><code>cat(&quot;\f&quot;)       # Clear the console</code></pre>
+<p></p>
+<pre class="r"><code>library(ggplot2)
+library(fpp2)</code></pre>
+<pre><code>## Loading required package: forecast</code></pre>
+<pre><code>## Warning: package &#39;forecast&#39; was built under R version 3.5.2</code></pre>
+<pre><code>## Loading required package: fma</code></pre>
+<pre><code>## Loading required package: expsmooth</code></pre>
+<pre class="r"><code>library(cowplot)</code></pre>
+<pre><code>## Warning: package &#39;cowplot&#39; was built under R version 3.5.2</code></pre>
+<pre><code>## 
+## Attaching package: &#39;cowplot&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:ggplot2&#39;:
+## 
+##     ggsave</code></pre>
+<pre class="r"><code>summary(cars)</code></pre>
+<pre><code>##      speed           dist       
+##  Min.   : 4.0   Min.   :  2.00  
+##  1st Qu.:12.0   1st Qu.: 26.00  
+##  Median :15.0   Median : 36.00  
+##  Mean   :15.4   Mean   : 42.98  
+##  3rd Qu.:19.0   3rd Qu.: 56.00  
+##  Max.   :25.0   Max.   :120.00</code></pre>
+<div id="hyndman-book-chapter-2.10" class="section level1">
+<h1>Hyndman Book Chapter 2.10</h1>
+<div id="section" class="section level3">
+<h3>2.10.1</h3>
+<pre class="r"><code>?gold
+?woolyrnq
+?gas</code></pre>
+<p>Gold: Daily morning gold prices in US dollars. 1 January 1985 – 31 March 1989. Wood: Quarterly production of woollen yarn in Australia: tonnes. Mar 1965 – Sep 1994. Gas: Australian monthly gas production: 1956–1995.</p>
+<pre class="r"><code># a. 
+autoplot(gold)</code></pre>
+<p><img src="Probset1_files/figure-html/#1%20plot-1.png" width="672" /></p>
+<pre class="r"><code>autoplot(woolyrnq)</code></pre>
+<p><img src="Probset1_files/figure-html/#1%20plot-2.png" width="672" /></p>
+<pre class="r"><code>autoplot(gas)</code></pre>
+<p><img src="Probset1_files/figure-html/#1%20plot-3.png" width="672" /></p>
+<pre class="r"><code># b. 
+frequency(gold)</code></pre>
+<pre><code>## [1] 1</code></pre>
+<pre class="r"><code>frequency(woolyrnq)</code></pre>
+<pre><code>## [1] 4</code></pre>
+<pre class="r"><code>frequency(gas)</code></pre>
+<pre><code>## [1] 12</code></pre>
+<pre class="r"><code># c. 
+which.max(gold)   # 770 is the highest outlier in the plot. </code></pre>
+<pre><code>## [1] 770</code></pre>
+<pre class="r"><code>which.max(woolyrnq)</code></pre>
+<pre><code>## [1] 21</code></pre>
+<pre class="r"><code>which.max(gas)</code></pre>
+<pre><code>## [1] 475</code></pre>
+</div>
+</div>
+<div id="section-1" class="section level1">
+<h1>2.10.2</h1>
+<pre class="r"><code># a. 
+tute1 &lt;- read.csv(&quot;/Users/apple/Desktop/bc_f19_econ/Forecasting/Probset1_files/tute1.csv&quot;, header = TRUE)
+# b. 
+mytimeseries &lt;- ts(tute1[,-1], start = 1981, frequency = 4)
+# The [,-1] removes the first column which contains the quarters. 
+# c. 
+autoplot(mytimeseries, facets = TRUE)</code></pre>
+<p><img src="Probset1_files/figure-html/#2%20plot-1.png" width="672" /></p>
+<pre class="r"><code># Alternatively, 
+autoplot(mytimeseries)</code></pre>
+<p><img src="Probset1_files/figure-html/#2%20plot-2.png" width="672" /> When not including facets = TRUE in the autoplot(), multiple time series will be faceted (and unless specified, colour is set to FALSE). If FALSE, each series will be assigned a colour, which means each column is plotted seperated in a different color when using autoplot(), and the scale will not be changed into the same “dimension”.</p>
+</div>
+<div id="section-2" class="section level1">
+<h1>2.10.3</h1>
+<pre class="r"><code># a. 
+retaildata &lt;- readxl::read_excel(&quot;/Users/apple/Desktop/bc_f19_econ/Forecasting/Probset1_files/retail.xlsx&quot;, skip = 1)
+# skip=1 is required because the Excel sheet has two header rows 
+samplets &lt;- ts(retaildata[, &quot;A3349873A&quot;], 
+               frequency = 12, start = c(1982, 4))
+# b. 
+myts &lt;- ts(retaildata[, &quot;A3349588R&quot;], 
+           frequency = 12, start = c(1982, 4))
+# c. 
+autoplot(myts)</code></pre>
+<p><img src="Probset1_files/figure-html/#3%20plot-1.png" width="672" /></p>
+<pre class="r"><code>ggseasonplot(myts)</code></pre>
+<p><img src="Probset1_files/figure-html/#3%20plot-2.png" width="672" /></p>
+<pre class="r"><code>ggsubseriesplot(myts)   # might be the best</code></pre>
+<p><img src="Probset1_files/figure-html/#3%20plot-3.png" width="672" /></p>
+<pre class="r"><code>gglagplot(myts)</code></pre>
+<p><img src="Probset1_files/figure-html/#3%20plot-4.png" width="672" /></p>
+<pre class="r"><code>ggAcf(myts)</code></pre>
+<p><img src="Probset1_files/figure-html/#3%20plot-5.png" width="672" /> Q: Can you spot any seasonality, cyclicity and trend? What do you learn about the series? A: The trend is growing overall but keeps dropping around 2009. There is a strong seasonality every year that December has the highest growth and max “sales(might be)”, while other months roughly stay the same. The cyclicity appears after 2010, which indicates the business cycle might enter the recession phase.</p>
+</div>
+<div id="section-3" class="section level1">
+<h1>2.10.4</h1>
+<pre class="r"><code># ?????? time plots of following time series? 
+help(bicoal)
+# Annual bituminous coal production in the USA: 1920–1968.
+autoplot(bicoal)</code></pre>
+<p><img src="Probset1_files/figure-html/#4%20first-1.png" width="672" /></p>
+<pre class="r"><code>help(chicken)
+# Price of chicken in US (constant dollars): 1924–1993.
+autoplot(chicken)</code></pre>
+<p><img src="Probset1_files/figure-html/#4%20first-2.png" width="672" /></p>
+<pre class="r"><code>help(dole)
+# Monthly total of people on unemployment benefits in Australia (Jan 1965 – Jul 1992).
+autoplot(dole)</code></pre>
+<p><img src="Probset1_files/figure-html/#4%20first-3.png" width="672" /></p>
+<pre class="r"><code>help(usdeaths)
+# Monthly accidental deaths in USA.
+autoplot(usdeaths)</code></pre>
+<p><img src="Probset1_files/figure-html/#4%20first-4.png" width="672" /></p>
+<pre class="r"><code>help(lynx)</code></pre>
+<pre><code>## Help on topic &#39;lynx&#39; was found in the following packages:
+## 
+##   Package               Library
+##   fma                   /Library/Frameworks/R.framework/Versions/3.5/Resources/library
+##   datasets              /Library/Frameworks/R.framework/Versions/3.5/Resources/library
+## 
+## 
+## Using the first match ...</code></pre>
+<pre class="r"><code># Annual Canadian Lynx trappings 1821-1934. 
+autoplot(lynx)</code></pre>
+<p><img src="Probset1_files/figure-html/#4%20first-5.png" width="672" /> Seasonality of around 40 years in a big run and every 5 years of the smaller seasonality.</p>
+<pre class="r"><code>help(&quot;goog&quot;)
+# Closing stock prices of GOOG from the NASDAQ exchange, for 1000 consecutive trading days between 25 February 2013 and 13 February 2017. Adjusted for splits. goog200 contains the first 200 observations from goog.
+
+autoplot(goog) + ylab(&quot;Stock Price in Dollars $&quot;) + ggtitle(&quot;Google Stock&quot;)</code></pre>
+<p><img src="Probset1_files/figure-html/#4%20second-1.png" width="672" /></p>
+<pre class="r"><code>help(writing)
+# Industry sales for printing and writing paper (in thousands of French francs): Jan 1963 – Dec 1972.
+autoplot(writing)</code></pre>
+<p><img src="Probset1_files/figure-html/#4%20second-2.png" width="672" /></p>
+<pre class="r"><code>help(fancy)
+# Monthly sales for a souvenir shop on the wharf at a beach resort town in Queensland, Australia.
+autoplot(fancy)</code></pre>
+<p><img src="Probset1_files/figure-html/#4%20second-3.png" width="672" /></p>
+<pre class="r"><code>help(a10)
+# Monthly anti-diabetic drug sales in Australia from 1991 to 2008.
+# Total monthly scripts for pharmaceutical products falling under ATC code A10, as recorded by the Australian Health Insurance Commission. July 1991 - June 2008.
+
+autoplot(h02)</code></pre>
+<p><img src="Probset1_files/figure-html/#4%20second-4.png" width="672" /></p>
+</div>
+<div id="section-4" class="section level1">
+<h1>2.10.5</h1>
+<pre class="r"><code>ggseasonplot(writing)</code></pre>
+<p><img src="Probset1_files/figure-html/#5%20plot-1.png" width="672" /></p>
+<pre class="r"><code>ggseasonplot(fancy)</code></pre>
+<p><img src="Probset1_files/figure-html/#5%20plot-2.png" width="672" /></p>
+<pre class="r"><code>ggseasonplot(a10)</code></pre>
+<p><img src="Probset1_files/figure-html/#5%20plot-3.png" width="672" /></p>
+<pre class="r"><code>ggseasonplot(h02)</code></pre>
+<p><img src="Probset1_files/figure-html/#5%20plot-4.png" width="672" /></p>
+<pre class="r"><code>ggsubseriesplot(writing)</code></pre>
+<p><img src="Probset1_files/figure-html/#5%20plot-5.png" width="672" /></p>
+<pre class="r"><code>ggsubseriesplot(fancy)</code></pre>
+<p><img src="Probset1_files/figure-html/#5%20plot-6.png" width="672" /></p>
+<pre class="r"><code>ggsubseriesplot(a10)</code></pre>
+<p><img src="Probset1_files/figure-html/#5%20plot-7.png" width="672" /></p>
+<pre class="r"><code>ggsubseriesplot(h02)</code></pre>
+<p><img src="Probset1_files/figure-html/#5%20plot-8.png" width="672" /> Q: What can you say about the seasonal patterns? Can you identify any unusual years? A: <em>writing</em>: There is a strong seasonality occuring in August with a huge drop every year, and also it stays roughly grwoing from Jan. to Mar and then drops to Apr. growing to Jun; and then roughly the same after Sept. There isn’t an obviously unusally year. <em>fancy</em>: There is a relatively strong seasanality occuring from November to December every end of the year of growth. But I fail to notice any unusual year other than 1993 that there is also a peak in March and the growth in December is enemorous. <em>a10</em>: There is a strong seasonality that every year it starts high in Jan. and then drop in Feb. and then grow slowly in the rest of the years. However, 2008 appears to be the unusual year that there is no clear pattern and the dataset stops in the middle. <em>h02</em>: There is a strong seasonality that every year the growth starts around Feburary and then grow at a relatively satisfying rate till the Jan. of the next year. The unusual years might be 1991 that the data starts after July and 2008 that the data ends around June.</p>
+</div>
+<div id="section-5" class="section level1">
+<h1>2.10.6</h1>
+<p>Question: Can you spot any seasonality, cyclicity and trend?</p>
+<pre class="r"><code>autoplot(hsales)</code></pre>
+<p><img src="Probset1_files/figure-html/#6%20plot-1.png" width="672" /></p>
+<pre class="r"><code>ggseasonplot(hsales)</code></pre>
+<p><img src="Probset1_files/figure-html/#6%20plot-2.png" width="672" /></p>
+<pre class="r"><code>ggsubseriesplot(hsales)</code></pre>
+<p><img src="Probset1_files/figure-html/#6%20plot-3.png" width="672" /></p>
+<pre class="r"><code>gglagplot(hsales)</code></pre>
+<p><img src="Probset1_files/figure-html/#6%20plot-4.png" width="672" /></p>
+<pre class="r"><code>ggAcf(hsales)</code></pre>
+<p><img src="Probset1_files/figure-html/#6%20plot-5.png" width="672" /></p>
+<pre class="r"><code># US Sales, cyclical where the trend shown not fit to a certain period every year. 
+# Some repetition of seasonality around. 
+
+autoplot(usdeaths)</code></pre>
+<p><img src="Probset1_files/figure-html/#6%20plot-6.png" width="672" /></p>
+<pre class="r"><code>ggseasonplot(usdeaths)</code></pre>
+<p><img src="Probset1_files/figure-html/#6%20plot-7.png" width="672" /></p>
+<pre class="r"><code>ggsubseriesplot(usdeaths)</code></pre>
+<p><img src="Probset1_files/figure-html/#6%20plot-8.png" width="672" /></p>
+<pre class="r"><code>gglagplot(usdeaths)</code></pre>
+<p><img src="Probset1_files/figure-html/#6%20plot-9.png" width="672" /></p>
+<pre class="r"><code>ggAcf(usdeaths)</code></pre>
+<p><img src="Probset1_files/figure-html/#6%20plot-10.png" width="672" /></p>
+<pre class="r"><code># Seasonality with a peak in July. 
+
+autoplot(bricksq)</code></pre>
+<p><img src="Probset1_files/figure-html/#6%20plot-11.png" width="672" /></p>
+<pre class="r"><code>ggseasonplot(bricksq)</code></pre>
+<p><img src="Probset1_files/figure-html/#6%20plot-12.png" width="672" /></p>
+<pre class="r"><code>ggsubseriesplot(bricksq)</code></pre>
+<p><img src="Probset1_files/figure-html/#6%20plot-13.png" width="672" /></p>
+<pre class="r"><code>gglagplot(bricksq)</code></pre>
+<p><img src="Probset1_files/figure-html/#6%20plot-14.png" width="672" /></p>
+<pre class="r"><code>ggAcf(bricksq)</code></pre>
+<p><img src="Probset1_files/figure-html/#6%20plot-15.png" width="672" /></p>
+<pre class="r"><code># Trend of growth overall; seasonality before 1975s every year; cyclical pattern similar to business cycles not in fixed time periods. 
+
+autoplot(sunspotarea)</code></pre>
+<p><img src="Probset1_files/figure-html/#6%20plot-16.png" width="672" /></p>
+<pre class="r"><code>#ggseasonplot(sunspotarea)
+#ggsubseriesplot(sunspotarea)
+gglagplot(sunspotarea)</code></pre>
+<p><img src="Probset1_files/figure-html/#6%20plot-17.png" width="672" /></p>
+<pre class="r"><code>ggAcf(sunspotarea)</code></pre>
+<p><img src="Probset1_files/figure-html/#6%20plot-18.png" width="672" /></p>
+<pre class="r"><code># There is no strong seasonality (very interesting that the system code tells me there isn&#39;t); however, there might be a cyclinal pattern with three periods. 
+
+autoplot(gasoline)</code></pre>
+<p><img src="Probset1_files/figure-html/#6%20plot-19.png" width="672" /></p>
+<pre class="r"><code>ggseasonplot(gasoline)</code></pre>
+<p><img src="Probset1_files/figure-html/#6%20plot-20.png" width="672" /></p>
+<pre class="r"><code>#ggsubseriesplot(gasoline[,1])
+gglagplot(gasoline)</code></pre>
+<p><img src="Probset1_files/figure-html/#6%20plot-21.png" width="672" /></p>
+<pre class="r"><code>ggAcf(gasoline)</code></pre>
+<p><img src="Probset1_files/figure-html/#6%20plot-22.png" width="672" /></p>
+<pre class="r"><code># There is no show of seasonality or cyclicity but there is a growth trend from 1990 to 2005, and then the gasoline amounts flutate roughly around a level. </code></pre>
+</div>
+<div id="section-6" class="section level1">
+<h1>10.2.7</h1>
+<pre class="r"><code>autoplot(arrivals)</code></pre>
+<p><img src="Probset1_files/figure-html/#7%20seasonal%20plot-1.png" width="672" /></p>
+<pre class="r"><code>japan1 &lt;- ggseasonplot(arrivals[,1])
+nz1 &lt;- ggseasonplot(arrivals[,2])
+uk1 &lt;- ggseasonplot(arrivals[,3])
+us1 &lt;- ggseasonplot(arrivals[,4])
+plot_grid(japan1, nz1, uk1, us1 
+          , labels = c(&quot;Japan&quot;, &quot;NZ&quot;, &quot;UK&quot;, &quot;US&quot;)
+          , nrow = 1) </code></pre>
+<p><img src="Probset1_files/figure-html/#7%20seasonal%20plot-2.png" width="672" /></p>
+<pre class="r"><code>japan2 &lt;- ggsubseriesplot(arrivals[,1])
+nz2 &lt;- ggsubseriesplot(arrivals[,2])
+uk2 &lt;- ggsubseriesplot(arrivals[,3])
+us2 &lt;- ggsubseriesplot(arrivals[,4])
+plot_grid(japan2, nz2, uk2, us2
+          , labels = c(&quot;Japan&quot;, &quot;NZ&quot;, &quot;UK&quot;, &quot;US&quot;)
+          , nrow = 1
+          )</code></pre>
+<p><img src="Probset1_files/figure-html/#7%20seasonal%20plot-3.png" width="672" /></p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
