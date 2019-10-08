@@ -6,11 +6,11 @@ Everything shown under this folder is credited to STP. If you would like to use 
 
 
 ## Reference 
-1. Forecasting: Principles and Practice [https://otexts.com/fpp2/] 
+1. [Forecasting: Principles and Practice](https://otexts.com/fpp2/) 
 Hyndman, R.J., & Athanasopoulos, G. (2018) Forecasting: principles and practice, 2nd edition, OTexts: Melbourne, Australia. OTexts.com/fpp2. Accessed on <Oct, 2019>. 
 
-2. R for Data Science [https://r4ds.had.co.nz/] 
+2. [R for Data Science](https://r4ds.had.co.nz/)
 Garrett Grolemund and Hadley Wickham. (2017) 
 
-3. An Introduction to Statistical Learning with Applications in R [http://faculty.marshall.usc.edu/gareth-james/ISL/index.html] 
+3. [An Introduction to Statistical Learning with Applications in R](http://faculty.marshall.usc.edu/gareth-james/ISL/index.html) 
 Gareth James, Daniela Witten, Trevor Hastie and Robert Tibshirani. (2009) 
