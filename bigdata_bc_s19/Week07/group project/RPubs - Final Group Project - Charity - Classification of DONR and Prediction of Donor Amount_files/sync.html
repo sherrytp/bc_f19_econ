@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<!-- saved from url=(0113)https://pippio.com/api/sync?pid=1391&ref=https%3A%2F%2Frpubs.com%2Fpriyankaigit%2Fcharity&it=1&iv=c1ik2p4f26d8ft5 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><meta name="referrer" content="no-referrer"><script>
+		var f = function () {
+	function loadChains(chains, limit, onChainDone) {
+    function newImageLoader(url) {
+        return function () {
+            var e = new Image();
+            addListeners(e);
+            e.src = url;
+        };
+    }
+
+    function newScriptLoader(url) {
+        return function () {
+            var e = document.createElement('script');
+            e.type = 'text/javascript';
+            e.async = true;
+            addListeners(e);
+            e.src = url;
+            document.head.appendChild(e);
+        };
+    }
+
+    function newIframeLoader(url) {
+        return function () {
+            var e = document.createElement('iframe');
+            e.style.display = 'none';
+            e.width = 1;
+            e.height = 1;
+            addListeners(e);
+            e.src = url;
+            document.body.appendChild(e);
+        };
+    }
+
+    function addListeners(e) {
+        addLoadErrorListeners(e, loadNext);
+        if (typeof onChainDone === 'function') {
+            addLoadErrorListeners(e, onChainDone);
+        }
+    }
+
+    function addLoadErrorListeners(e, listener) {
+        if (typeof e.addEventListener === 'function') {
+            e.addEventListener('load', listener, false);
+            e.addEventListener('error', listener, false);
+        } else if (typeof e.attachEvent === 'function') {
+            e.attachEvent('onload', listener);
+            e.attachEvent('onerror', listener);
+        }
+    }
+
+    function loadNext() {
+        var next = loaders.shift();
+        if (typeof next === "function") {
+            setTimeout(next);
+        }
+    }
+
+    var loaders = chains.reduce(function (acc, value) {
+        var mode = value[0];
+        var url = value[1];
+
+        switch (mode) {
+            case 'image':
+                acc.push(newImageLoader(url));
+                break;
+            case 'script':
+                acc.push(newScriptLoader(url));
+                break;
+            case 'iframe':
+                acc.push(newIframeLoader(url));
+                break;
+        }
+        return acc;
+    }, []);
+
+    for (var i = 0; i < limit; i++) {
+        loadNext();
+    }
+}
+
+	var chains = [];
+	chains.push(['image', 'https://e.dlx.addthis.com/e/a-1137/s-7715?ret=img&na_em=74bd6970cb24b9882fa5c481f3c89b90e109f60d&na_em=3f44f1590cb87e7281f22339768f04cbc1c6aba3&na_ci=EDlfuur5kd0zNan1iPQmoTPGGVU&na_sp=1062']);
+	chains.push(['image', 'https://ei.rlcdn.com/448046.gif?n=1&partner_site_id=1062&m=275c30dc027a714dddb9b2e3182dc24a&s=74bd6970cb24b9882fa5c481f3c89b90e109f60d&s256=5cc980671dba34b491c50eaba89ca48f2f95a43a6152d0ed61c2e5006c8bca97']);
+	chains.push(['image', 'https://mid.rkdms.com/bct?pid=66326baa-c2c7-4867-94c1-ae2533db593b&_ct=img&e_sh1=74bd6970cb24b9882fa5c481f3c89b90e109f60d&e_sh2=A96BC69304413FA76E5932D2D446AC2A853A76F68CC3B765AF264127BE936174&e_md5=275c30dc027a714dddb9b2e3182dc24a']);
+	chains.push(['image', 'https://partner.mediawallahscript.com/?account_id=1003&partner_id=1011&uid=&custom=1041&placement_id=1391&tag_format=img&tag_action=sync&sha_1_hash=74bd6970cb24b9882fa5c481f3c89b90e109f60d&sha_256_hash=A96BC69304413FA76E5932D2D446AC2A853A76F68CC3B765AF264127BE936174&md5_hash=8762816730e671d26ea3d252deedcd9b&cb=1551306864']);
+	chains.push(['image', 'https://tr.snapchat.com/cs/r?u_hem=A96BC69304413FA76E5932D2D446AC2A853A76F68CC3B765AF264127BE936174']);
+	chains.push(['image', 'https://p.adsymptotic.com/d/px/?_pid=15577&_psign=0c2a910e9546544e39482a0408efbc33&_puuid=8762816730e671d26ea3d252deedcd9b&_rand=00394313']);
+	chains.push(['image', 'https://ib.adnxs.com/getuid?https%3A%2F%2Fs.cpx.to%2Fca.png%3Fref%3Dhttps%253A%252F%252Frpubs.com%252Fpriyankaigit%252Fcharity%26pid%3D11718%26url%3Dhttps%253A%252F%252Frpubs.com%252Fpriyankaigit%252Fcharity%26adnxs_uid%3D%24UID']);
+	chains.push(['image', 'https://ps.eyeota.net/pixel?pid=jbc9gd0&t=gif&cat=gs_business&cat=gs_business_marketing']);
+	chains.push(['image', 'https://tag.apxlv.com/tag/partner/222?pixel_mode=pixel']);
+	chains.push(['image', 'https://p.adsymptotic.com/d/px?_pid=13553&_psign=9e62e5c043ecadc9479a0ccac401dd7d']);
+	chains.push(['image', 'https://i.liadm.com/s/h/49326']);
+	chains.push(['image', 'https://rc.rlcdn.com/456809.gif?n=5']);
+	chains.push(['image', 'https://rc.rlcdn.com/456809.gif?n=9']);
+	chains.push(['image', 'https://rc.rlcdn.com/456809.gif?n=7']);
+	chains.push(['image', 'https://rc.rlcdn.com/456809.gif?n=4']);
+
+	loadChains(chains, 10, (typeof onDone === "function") ? onDone : null);
+		};
+
+		if (document.body) { f(); } else { document.addEventListener('DOMContentLoaded', f); }
+	</script>
+</head><body></body></html>
