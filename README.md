@@ -5,6 +5,15 @@ Course Materials for Econ Classes I Take in 2019 Fall Semester
 Everything shown under this folder is credited to STP. If you would like to use or cite any materials, pls msg me first. Any violation of use is subjected to plagiarism and will yield the rights of law to be reserved by myself. 
 
 
+- Empirical Behavioral Econ 
+- Forecasting and Time Series 
+- Big Data Econometrics 
+- Monetary Banking and Insurance 
+
+- Other Practice and Bootcamp Notes 
+
+
+
 ## Reference 
 1. [Forecasting: Principles and Practice](https://otexts.com/fpp2/) 
 Hyndman, R.J., & Athanasopoulos, G. (2018) Forecasting: principles and practice, 2nd edition, OTexts: Melbourne, Australia. OTexts.com/fpp2. Accessed on <Oct, 2019>. 
