@@ -126,3 +126,16 @@ elecequip %>%
 # increasing the s.window with large dataset will slow the process down; s.window = either the character string "periodic" or the span (in lags) of the loess window for seasonal extraction, which should be odd and at least 7, according to Cleveland et al. This has no default. 
 # t.window = smoothing window with large range for trend; the span (in lags) of the loess window for trend extraction, which should be odd. If NULL, the default, nextodd(ceiling((1.5*period) / (1-(1.5/s.window)))), is taken.
 
+# Oct. 22 
+# X-11 Decomposition 
+library(seasonal)
+fit <- seas(elecequip, x11="")
+autoplot(fit)
+
+# INTERESTING GRAPH 
+arrows(2,8, 7, 4, col = "red", lwd = 2)
+k = -0.8 
+for (i in 1:10){
+  len = 1/10
+  arrows(2,8,2+len, 8 - 0.8*len, col = "red")
+}
