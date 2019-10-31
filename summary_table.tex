@@ -1,6 +1,7 @@
 \documentclass[12pt]{article}
 
 \usepackage{amssymb,amsmath,amsfonts,eurosym,geometry,ulem,graphicx,caption,color,setspace,sectsty,comment,footmisc,caption,natbib,pdflscape,subfigure,array,hyperref}
+\usepackage{indentfirst}
 
 \normalem
 
@@ -26,7 +27,7 @@
 \begin{document}
 
 \begin{titlepage}
-\title{Predictions on EU Target2 Balance}
+\title{Predictions on TARGET2 Balance}
 \author{Sherry Peng Tian\thanks{Tian: Boston College, tianpe@bc.edu, Eagle ID: 17651338}}
 % \and Surname2\thanks{affiliation2, address2, email2. Acknowledgements}}
 \date{\today}
@@ -62,21 +63,25 @@
 
 European Union, as the largest monetary organization and the second largest economy in nominal terms (only after the United States) according to GDP, PPP, and nominal GDP, those normally accepted economic measures, was established in November, 1993. EU countries gather together to make determination on economic policies, environmental issues, political pointviews, and even educational and employment development. Therefore, the study of the EU economy assists in the long run of understanding and predicting the global trend of economic development. Starting from the year of 1999 with some EU member states, now 19 out of 28 EU states/countries accept and use euro as official and main currency in a currency union (called Eurozone); however the remaining 9 states still accept the usage of euro in some ways, making euro the most widely used currency in the EU. 
 
-TARGET2 stands for Trans-European Automated Real-time Gross settlement Express Transfer system and works as a settlement system for the Eurozone. It is based on an integrated central technical infrastructure, called the Single Shared Platform (SSP), which is operated by three central banks of France, Germany, and Italy. Beginning in November 2007, TARGET2 starts to replace TARGET and is made accessible to members outside of the Eurozone countries. Since TARGET2 works as an interbank real-time gross settlement payment system for the clearing of cross-border transfers in the Eurozone, the objectives includes supporting EU monetary policy, stablizing Eurozone money market, minimizing systemic risk and increasing the efficiency of cross-border transfers. Understanding and accurately predicting of TARGET2 balance can establish a good 
+TARGET2 stands for Trans-European Automated Real-time Gross settlement Express Transfer system and works as a settlement system for the Eurozone. It is based on an integrated central technical infrastructure, called the Single Shared Platform (SSP), which is operated by three central banks of France, Germany, and Italy. Beginning in November 2007, TARGET2 starts to replace TARGET and is made accessible to members outside of the Eurozone countries. Since TARGET2 works as an interbank real-time gross settlement payment system for the clearing of cross-border transfers in the Eurozone, the objectives includes supporting EU monetary policy, stablizing Eurozone money market, minimizing systemic risk and increasing the efficiency of cross-border transfers. Understanding and accurately predicting of TARGET2 balance can establish a good foundation about the global economics. 
 
+Since the Eurozone monetary system consists of the European Central Bank (ECB) and the national central banks of all 19 EU member states, a well-balanced TARGET2 system should be the national commercial banks supporting investment and consumption while maintaining a clear transaction with the national central bank, and then the central banks of different countries linking to ECB via TARGET system, left with parties of creditor nations and borrower nations. When a Eurozone country has a balanced national payment, its TARGET2 balance equals to zero, but when a country encounters unwilingness of equity financing or the expectation of macroeconomics is inclined to drop, the country lacks the capability to pay debts back and becomes the debitor nation, resulting in the creditor nation with a positive TARGET2 balance. During the financial crisis, the After the 2008 financial crisis, the Eurozone monetary market recovers from the higher pressure of subprime financial debts around 2012. 
 
 
 \section{Literature Review} \label{sec:literature}
-\subsection{Target 2}
-\subsection{Target2}
-\subsection{ Policy}
+\subsection{Interpreting TARGET2 balances}
+
+
 \subsection{Measuring Economic Policy Uncertainty}
+
+\subsection{Target2}
+\subsection{Policy}
 \subsection{Box-Cox Transformation}
 
 \section{Model} \label{sec:model}
 \subsection{Data Source and Cleaning}
 
-The policy uncertainty index of various countries is derived directly from \href{https://www.policyuncertainty.com/monetary.html}{the Economic Policy Uncertainty} website and the target2 balance datasets are from \href{http://www.eurocrisismonitor.com}{the Institute of Empirical Economic Research} at Osnabrück University, which is a reliable source for tracking TARGET2 balances from Janurary 1987 to June 2019, updated nearly on a monthly basis. 
+The policy uncertainty index of various countries is derived directly from \href{https://www.policyuncertainty.com/monetary.html}{\underline{Economic Policy Uncertainty}} website and the target2 balance datasets are from \href{http://www.eurocrisismonitor.com}{\underline{Institute of Empirical Economic Research}} at Osnabrück University, which is a reliable source for tracking TARGET2 balances from Janurary 1987 to June 2019, updated nearly on a monthly basis. 
 
 Since the timelines of two datasets are moduled the same, after year and month, there is no difficulty transferring the combined ones into a time series. Refererring to the raw dataset, there are missing variables only for ECB and Cyprus groups. Table 1 below has shown descriptive details of countries' target2 balance as well as the policy uncertainly index from a macroeconomic perspective. In addition, Figure 1 of uncertainly index has shown that most index lie below 200 with some extreme values extending to 1000. The policy uncertainty is measured using political news and macroeconomic events in 100 percentage. The extreme higher index of United Kingdom and France can be explained by the event of Brexit and the discussion around exiting from the EU. Figure 2 shows the median ranking of Target2 Balance, which corresponds to people's usual understanding. Figure 3 displays the only two negative examples of Austria and Begium, where the balance from 2001 till now has been below zero. 
 \begin{table}[!htbp] \centering 
@@ -112,6 +117,7 @@ UK-News-Index & 209.477777781787 & 156.802512055422 & 30.4688014984131 & 1141.79
 \end{tabular}} 
 \end{table} 
 \begin{figure}
+  \centering 
   \includegraphics[width=\linewidth]{Uncertainty.png}
   \caption{European, Germany, Italy, UK, France, Spain, Greece News Index}
   \label{fig:policy_uncertainty}
