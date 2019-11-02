@@ -1,0 +1,148 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath}
+\usepackage{geometry}
+
+\geometry{top=1in,bottom=1in,left=1in,right=1in}
+
+\setlength{\parindent}{0in}
+\setlength{\parskip}{2ex}
+
+\begin{document}
+
+\begin{center}
+\begin{tabular*}{6.5in}{l@{\extracolsep{\fill}}r}
+\multicolumn{2}{c} {\bfseries Problem Set 5} \\
+& \\
+Name: Sherry Peng Tian & Sep 24, 2019 \\
+ECON 772001 - Math for Economists & Peter Ireland \\
+Boston College, Department of Economics & Fall 2019 \\
+\end{tabular*}
+\end{center}
+
+{\bfseries 1. Optimal Allocations}
+
+Consider an economy in which output is produced with capital $k$ and labor (``hours worked'') $h$ according to the Cobb-Douglas specification $k^{\alpha}h^{1-\alpha}$, where $0<\alpha<1$. In this static model, the capital stock $k$ is taken as given, but hours worked $h$ and consumption $c$ are chosen by a benevolent social planner in order to maximize the utility $\ln(c)-h$ of a representative consumer, where $\ln$ denotes the natural logarithm. Hence, an optimal resource allocation solves the problem
+$$
+\max_{h,c} \ln(c)-h \text{ subject to } k^{\alpha}h^{1-\alpha} \geq c.
+$$
+Find solutions for the optimal choices for $h$ and $c$ in terms of the parameters $k$ and $\alpha$. Set up the Lagrangian equation first, 
+\begin{align*}
+\mathcal{L}(c, h, k, \lambda) = \ln(c) - h + \lambda(c - k^{\alpha}h^{1-\alpha})  \\
+\mathcal{L}_1 = \frac{1}{c} - \lambda = 0   \\
+\mathcal{L}_2 = -1 + (1-\alpha)\lambda k^{\alpha}h^{-\lambda} = 0   \\
+\text{ constraint, } \mathcal{L}_3 = k^{\alpha}h^{1-\alpha} - c \geq 0    \\ 
+\text{ nonnegativity } \lambda \geq 0   \\ 
+\text{complementary slackness } \lambda(k^{\alpha}h^{1-\alpha} - c) = 0 \\ 
+\text{ Therefore, } c\lambda = 1   \\
+(1-\alpha)\lambdak^{\alpha}h^{-\alpha} = 1   \\
+\text{ because }c = k^{\alpha}h^{1-\alpha} 
+\frac{(1-\alpha)\lambda k^{\alpha}h^{-\alpha}}{\lambda k^{\alpha}h^{1-\alpha}} = \frac{1-\alpha}{h} = 1  \\ 
+h^*(k, \alpha) = 1-\alpha   \\ 
+c^*(k, \alpha) = k^{\alpha}(1-\alpha)^{1-\alpha}   \\ 
+\lambda^* = k^{-\alpha}(1-\alpha)^{\alpha-1} 
+\end{align*}
+
+{\bfseries 2. Equilibrium Allocations}
+
+Now consider the same economy, but where perfectly competitive markets for inputs and outputs replace the social planner in allocating resources. 
+\begin{description}
+\item a. Now, the representative consumer (standing in for a large number of identical consumers) is endowed with $k^{s}$ units of capital, and chooses labor supply $h^{s}$ and consumption $c$ to maximize utility subject to a budget constraint, that is, to solve
+$$
+\max_{h^{s},c} \ln(c)-h^{s} \text{ subject to } rk^{s} + wh^{s} \geq c,
+$$
+where $r$ is the rental rate for capital, $w$ is the wage rate for labor, and output is the economy's numeraire, so that the price of consumption equals one and all other prices are expressed in ``real'' terms. Find solutions for the optimal choices of $h^{s}$ and $c$ in terms of the parameters $k^{s}$, $r$, and $w$ (note that the consumer will always find it advantageous to supply all of its capital $k^{s}$ ``inelastically'' to the market, making $k^{s}$ a parameter as opposed to a choice variable).
+\begin{align*}
+\mathcal{L}(h^s, k^s, c, \lambda) = \ln(c) - h^s + \lambda(rk^s+wh^s-c)   \\ 
+\mathcal{L}_1 = \frac{1}{c} - \lambda = 0   \\ 
+\mathcal{L}_2 = -1 + \lambda w = 0   \\ 
+\text{ constraint, } rk^s+wh^s - c \geq 0   \\ 
+\text{ nonnegativity } \lambda^* \geq 0   \\
+\text{ complementary slackness } \lambda(rk^s + wh^s - c) = 0  \\ 
+\longarrow c\lambda = 1 , \lambda w = 1    \\ 
+c^*(k^s, r, w) = w    \\ 
+rk^s + wh^s = c = w  \longarrow  h^*(k^s, r, w) = \frac{w - rk^s}{w} = 1 - \frac{rk^s}{w}   \\ 
+\lambda^* = \frac{1}{w} 
+\end{align*}
+
+\item b. Meanwhile, a representative firm (standing in for a large number of identical firms) rents $k^{d}$ units of capital and hires $h^{d}$ units of labor to produce output according to the production function $(k^{d})^{\alpha}(h^{d})^{1-\alpha}$; its profit-maximization problem is
+$$
+\max_{k^{d},h^{d}} \, (k^{d})^{\alpha}(h^{d})^{1-\alpha} - rk^{d} - wh^{d}.
+$$
+Write down the optimality conditions that characterize the solution to this unconstrained optimization problem. 
+\begin{align*} 
+Df(x) = (\alpha(k^d)^{\alpha-1}(h^d)^{1-\alpha} - r = 0, (1-\alpha)(k^d)^{\alpha}(h^d)^{-\alpha} - w = 0)   \\ 
+D^2f(x) = \frac{\delta f^2}{\delta k^d} = \alpha(\alpha-1)(k^d)^{\alpha-2}(h^d)^{1-\alpha}    \\ 
+D^2f(x) = \frac{\delta f^2}{\delta h^d} = -\alpha(1-\alpha)(k^d)^{\alpha}(h^d)^{-\alpha-1} 
+\end{align*}
+The second order conditions of $k^d$ and $h^d$ of Hessian matrix have to be a negative definite matrix to be the local maximum. 
+
+\item c. In a competitive equilibrium, market clearing for inputs and outputs requires that $k^{s}=k^{d}=k$, $h^{s}=h^{d}=h$, and $c=k^{\alpha}h^{1-\alpha}$, so solve for the equilibrium values of $h$ and $c$ in terms of the parameters $k$ and $\alpha$.
+Substituting all into (a) and (b), 
+\begin{align*}
+h = \frac{w - rk}{w} = 1-\frac{rk}{w}   \\ 
+\frac{r}{w} = \frac{\alpha h}{(1-\alpha)k}  \longarrow  (1-\alpha)rk = \alpha hw  \longarrow kr = \frac{\alpha hw}{1-\alpha}    \\ 
+h^*(k, \alpha) = 1-\alpha   \\ 
+c^*(k, \alpha) = w = k^{\alpha}h^{1-\alpha} = k^{\alpha}(1-\alpha)^{1-\alpha} 
+\end{align*}
+
+\item d. How do these equilibrium allocations compare to the optimal allocations chosen by the social planner?
+More simple. 
+\end{description}
+
+{\bfseries 3. Optimal Pollution}
+
+Now suppose that the production of $y=k^{\alpha}h^{1-\alpha}$ units of output yields the same amount of ``pollution'' $d$, and that more pollution impacts negatively on the representative consumer, whose preferences are now described by the utility function $\ln(c)-h-\gamma \ln(d)$, where $0<\gamma<1$. A social planner will take into account the fact that more consumption can only be obtained with more pollution, that is, that $c=d$, and will therefore solve
+$$
+\max_{h,c} \, (1-\gamma)\ln(c)-h \text{ subject to } k^{\alpha}h^{1-\alpha} \geq c.
+$$
+Find solutions for the optimal choices for $h$ and $c$ in terms of the parameters $k$, $\alpha$, and $\gamma$.
+\begin{align*}
+\mathcal{L}(h, c, k, \gamma, \lambda) = (1-\gamma)\ln(c) - h + \lambda(k^{\alpha}h^{1-\alpha} - c)    \\ 
+\mathcal{L}_1 = \frac{1-\gamma}{c} - \lambda = 0    \\ 
+\mathcal{L}_2 = -1 + (1-\alpha)\lambda k^{\alpha}h^{-\alpha} = 0    \\ 
+\text{ constraint } \mathcal{L}_3 = k^{\alpha}h^{1-\alpha} - c \geq 0     \\ 
+\text{ nonnegativity } \lambda \geq 0    \\ 
+\text{ complementary slackness } \lambda(k^{\alpha}h^{1-\alpha} - c) = 0.     \\ 
+\text{ Therefore, }  \mathcal{L}_1 / \mathcal{L}_2 = \frac{c}{1-\gamma} = (1-\alpha)k^{\alpha}h^{1-\alpha} = k^{\alpha}h^{1-\alpha}    \\ 
+h^*(k, \alpha, \gamma) = (1-\alpha)(1-\gamma).    \\ 
+c^*(k, \alpha, \gamma) = k^{\alpha}[(1-\alpha)(1-\gamma)]^{1-\alpha}.    \\ 
+\lambda^*(k, \alpha, \gamma) = k^{-\alpha}(1-\alpha)^{\alpha-1}(1-\gamma)^{\alpha}.  
+\end{align*}
+
+{\bfseries 4. Negative Externalities}
+
+Now assume once again that allocations are determined by perfectly competitive markets, but that individual consumers fail to take into account the fact that the more they choose to consume the more pollution there will be and that, similarly, individual firms are not penalized in any way for the pollution that they create.
+\begin{description}
+\item a. Now, consistent with the idea that no one individual views him or herself as being able to do anything about the total amount of pollution economy-wide, the representative consumer solves
+$$
+\max_{h^{s},c} \ln(c) - h^{s} - \gamma \ln(d) \text{ subject to } rk^{s} + wh^{s} \geq c,
+$$
+taking $d$ as a given. Find solutions for the optimal choices of $h^{s}$ and $c$ in terms of the parameters $k^{s}$, $r$, $w$, and $d$.
+\item b. Also consistent with the idea that individual businesses are not penalized for the pollution they create, the representative firm solves
+$$
+\max_{k^{d},h^{d}} \, (k^{d})^{\alpha}(h^{d})^{1-\alpha} - rk^{d} - wh^{d},
+$$
+exactly as before. So just copy over the optimality conditions that characterize the solution to this unconstrained optimization problem.
+\item c. Now, in competitive equilibrium, market clearing for inputs and outputs plus the additional condition linking production to pollution requires that $k^{s}=k^{d}=k$, $h^{s}=h^{d}=h$, and $c=d=k^{\alpha}h^{1-\alpha}$. Use these equilibrium conditions, together with your results from parts (a) and (b) above, to solve for the equilibrium values of $h$ and $c$ in terms of the parameters $k$, $\alpha$, and $\gamma$.
+\item d. How do these equilibrium allocations compare to the optimal allocations chosen by the social planner? Is there ``too much'' or ``too little'' production and pollution in the market economy?
+\end{description}
+
+{\bfseries 5. Government Intervention}
+
+Finally, suppose that the government intervenes in the market economy by taxing firms at the rate $\tau$ for every unit of output -- and hence every unit of pollution -- they create and using the proceeds of this output tax to provide each consumer with a payment $T$ that ``compensates'' him or her for having to suffer the ill effects of pollution.
+\begin{description}
+\item a. Now the representative consumer takes the amount of pollution $d$ and the government payment $T$ as given, and solves
+$$
+\max_{h^{s},c} \ln(c) - h^{s} - \gamma \ln(d) \text{ subject to } T + rk^{s} + wh^{s} \geq c.
+$$
+taking $d$ as a given. Find solutions for the optimal choices of $h^{s}$ and $c$ in terms of the parameters $k^{s}$, $r$, $w$, $d$, $T$.
+\item b. Meanwhile, the representative firm acts to maximize its after-tax profits by solving
+$$
+\max_{k^{d},h^{d}} \, (1-\tau)(k^{d})^{\alpha}(h^{d})^{1-\alpha} - rk^{d} - wh^{d}.
+$$
+Write down the optimality conditions that characterize the solution to this unconstrained optimization problem.
+\item c. As before, in competitive equilibrium, market clearing for inputs and outputs plus the additional condition linking production to pollution requires that $k^{s}=k^{d}=k$, $h^{s}=h^{d}=h$, and $c=d=k^{\alpha}h^{1-\alpha}$. But now, in addition, the government's budget must balance: it can make a compensation payment to each injured consumer only to the extent that it raises tax revenue from each offending firm. This additional requirement means that $T=\tau k^{\alpha}h^{1-\alpha}$ must hold in equilibrium as well. Use these equilibrium conditions, together with your results from parts (a) and (b) above, to solve for the equilibrium values of $h$ and $c$ in terms of the parameters $k$, $\alpha$, and $\gamma$ and the tax rate $\tau$.
+\item d. By comparing your results from part (c) of this question to your results from question 3 above, can you determine the tax rate $\tau$ that the government can use to make equilibrium allocations coincide with the optimal allocation in which the social planner ``internalizes'' the effects that production has on pollution and therefore consumers' well-being?
+\end{description}
+\end{document}

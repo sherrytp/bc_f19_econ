@@ -1,0 +1,155 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath}
+\usepackage{geometry}
+
+\geometry{top=1in,bottom=1in,left=1in,right=1in}
+
+\setlength{\parindent}{0in}
+\setlength{\parskip}{2ex}
+
+\begin{document}
+
+\begin{center}
+\begin{tabular*}{6.5in}{l@{\extracolsep{\fill}}r}
+\multicolumn{2}{c} {\bfseries Problem Set 1 } \\
+& \\
+Name: Sherry Peng Tian & Sep. 10, 2019 \\
+ECON 772001 - Math for Economists & Peter Ireland \\
+Boston College, Department of Economics & Fall 2019 \\
+\end{tabular*}
+\end{center}
+
+{\bfseries 1. Profit Maximization}
+\begin{description}
+\item a. Set up the Lagrangian for this problem, letting $\lambda$ denote the multiplier on the constraint.
+\begin{gather*}
+    \mathcal{L}(y, k, l, \lambda) = py - rk - wl + \lambda * (k^{a}l^{b} - y)
+\end{gather*}
+, where $0<a<1$, $0<b<1$, and $0<a+b<1$.
+\item b. Next, write down the conditions that, according to the Kuhn-Tucker theorem, must be satisfied by the values $y^{*}$, $k^{*}$, and $l^{*}$ that solve the firm's problem, together with the associated value $\lambda^{*}$ for the multiplier.
+\begin{align*}
+    \mathcal{L}_1(k^*, l^*, y^*, \lambda^*) = r - a\lambda k^{a-1}l^b = 0 .    \tag{1.1} \\
+    \mathcal{L}_2(k^*, l^*, y^*, \lambda^*) = w - b\lambda k^al^{b-1} = 0 .    \tag{1.2} \\
+    \mathcal{L}_3(k^*, l^*, y^*, \lambda^*) = p - \lambda = 0 .       \tag{1.3}
+\end{align*}
+\begin{align*}
+    \mathcal{L}(k^*, l^*, y^*, \lambda^*) = y - k^al^b \geq 0     \tag{2}
+\end{align*}
+\begin{align*}
+    \lambda^* \geq 0    \tag{3}
+\end{align*}
+\begin{align*}
+    \lambda^*(y - k^al^b) = 0 .    \tag{4}
+\end{align*}
+\item c. Assume that the constraint binds at the optimum (can you tell under what conditions this will be true?), and use your results from above to solve for $y^{*}$, $k^{*}$, $l^{*}$, and $\lambda^{*}$ in terms of the model's parameters: $a$, $b$, $p$, $r$, and $w$.
+\newline
+\underline{Answer}: When the complementary slackness condition (4): 
+\[\lambda^*(y - k^al^b) = 0 \] must hold and be satisfied; where if $\lambda^* \geq 0$, then the constraint must bind and if the constraint does not bind, then $\lambda^* = 0$. 
+\newline Since here, (1.3) indicates $\lambda^* = p \geq 0$, the constraint $k^al^b = y$ binds. 
+\begin{gather*}
+    y^*(k^*, l^*, a, b) = k^{*a}l^{*b} .  \\ 
+    (1.1) \Rightarrow r = \lambda ak^{a-1}l^b \\
+    (1.2) \Rightarrow w = \lambda bk^al^{b-1} \\
+    (1.3) \Rightarrow \lambda^*(p) = p  \\ 
+    (1.1)/(1.2) \Rightarrow \frac{r}{w} = \frac{al}{bk} \\
+    (1.2) \Rightarrow w = bpk^{a}l^{b-1} = bp(\frac{awl}{br})^al^{b-1} = pa^aw^ar^{-a}b^{1-a}*l^{a+b-1} \\
+    \Rightarrow l^*(a,b,p,r,w) = \sqrt[a+b-1]{\frac{a^{-a}w^{1-a}r^ab^{a-1}}{p}}  \\
+    k^*(a,b,p,r,w) = \sqrt[a+b-1]{\frac{r^{1-b}b^{-b}w^ba^{b-1}}{p}}  \\
+    y^*(a,b,p,r,w) = (\sqrt[a+b-1]{\frac{r^{1-b}b^{-b}w^ba^{b-1}}{p}})^a(\sqrt[a+b-1]{\frac{a^{-a}w^{1-a}r^ab^{a-1}}{p}})^b
+\end{gather*}
+\item d. Finally, use your solutions from above to answer the following questions:
+\begin{description}
+\item i. What happens to the optimal $y^{*}$, $k^{*}$, and $l^{*}$ when the output price $p$ rises, holding all other parameters fixed? In each case, does the optimal choice rise, fall, or stay the same?
+\newline
+\underline{Answer}: $l^*$, $k^*$, $y^*$ all fall if the output price $p$ rises. 
+\item ii. What happens to the optimal $y^{*}$, $k^{*}$, and $l^{*}$ when the rental rate for capital $r$ rises, holding all other parameters fixed?
+\newline
+\underline{Answer}: $l^*$ rises, $k^*$ falls if the rental rate for capital $r$ rises, but $y^*$ depends on the ratio of $a/b$ because it is a product of $l^* * k^*$. 
+\item iii. What happens to the optimal $y^{*}$, $k^{*}$, and $l^{*}$ when the wage rate $w$ rises, holding all other parameters fixed?
+\newline
+\underline{Answer}: $l^*$ falls, $k^*$ rises if the wage rate $w$ rises, but $y^*$ depends on the ratio of $a/b$ because  it is a product of $l^* * k^*$. 
+\item iv. What happens to the optimal $y^{*}$, $k^{*}$, and $l^{*}$ when $p$, $r$, and $w$ all double at the same time?
+\newline
+\underline{Answer}: $l^*$ and $k^*$ double but $y^*$ times 4 when $p$, $r$, and $w$ all double at the same time.
+\end{description}
+\end{description}
+
+\pagebreak{}
+{\bfseries 2. Utility Maximization}
+\begin{description}
+\item a. Set up the Lagrangian for the consumer's problem: choose $c_{1}$ and $c_{2}$ to maximize utility subject to the budget constraint, letting $\lambda$ denote the multiplier on the constraint.
+\begin{gather*}
+\mathcal{L}(c_1,c_2,p_1,p_2,\lambda) = c_{1}^{a}c_{2}^{1-a} + \lambda*[I - (p_{1}c_{1}+p_{2}c_{2})]
+\end{gather*}
+, where $0<a<1$.
+\item b. Next, write down the conditions that, according to the Kuhn-Tucker theorem, must be satisfied by the values $c_{1}^{*}$ and $c_{2}^{*}$ that solve the consumer's problem, together with the associated value $\lambda^{*}$ for the multiplier.
+\begin{align*}
+    \mathcal{L}_{1}(c_1^*,c_2^*, \lambda^*) = ac_1^{a-1}c_2^{1-a} - \lambda p_1 = 0 \\
+    \mathcal{L}_{2}(c_1^*, c_2^*, \lambda^*) = (1-a)c_1^{a}c_2^{-a} - \lambda p_2 = 0 .  \tag{1}
+\end{align*}
+\begin{align*}
+    \mathcal{L}(c_1^*, c_2^*, \lambda^*) = I - (p_1c_1+p_2c_2) \geq 0 .  \tag{2}
+\end{align*}
+\begin{align*}
+    \lambda^* \geq 0 . \tag{3}
+\end{align*}
+\begin{align*}
+    \lambda^*[I - (p_1c_1+p_2c_2)] = 0  \tag{4}
+\end{align*}
+\item c. Assume that the budget constraint binds at the optimum (again, can you tell under what conditions this will be true?), and use your results from above to solve for $c_{1}^{*}$, $c_{2}^{*}$, and $\lambda^{*}$ in terms of the model's parameters: $I$, $p_{1}$, $p_{2}$, and $a$.
+\newline
+\underline{Answer}: When the complementary slackness condition (4): 
+\[\lambda^*[I - p_1c_1+p_2c_2] = 0 \] must hold and be satisfied; where if $\lambda^* \geq 0$, then the constraint must bind and if the constraint does not bind, then $\lambda^* = 0$. Since the constraint binds,
+\begin{gather*}
+    \lambda \geq 0, and \\ I = p_1c_1 + p_2c_2 
+    \\
+    (1) \Rightarrow \frac{p_1}{p_2} = \frac{ac_1^{a-1}c_2^{1-a}}{{1-a}c_1^ac_2^{-a}} = \frac{a}{1-a}\frac{c_2}{c_1} \Rightarrow p_1c_1 = \frac{a}{1-a}p_2c_2
+    \\
+    (4) \Rightarrow I = p_1c_1 + p_2c_2 = (\frac{a}{1-a} + 1)p_2c_2 = \frac{1}{1-a}p_2c_2
+    \\
+    c_2^*(p_1,p_2,a,I) = (1-a)\frac{I}{p_2} \\
+    c_1^*(p_1,p_2,a,I) = a\frac{I}{p_1} \\ 
+    \lambda^*(p_1,p2,a,I) = -\frac{a^{a+1}(1-a)^{1-a}I}{p_1p_2}^{a-1}
+\end{gather*}
+\item d. Finally, using the answer we get, \newline 
+$a = p_1c_1^*/I$ and $1-a = p_2c_2^*/I$, indicating the preference parameter $a$ is directly related to goods consumption. 
+\end{description}
+
+\pagebreak{}
+{\bfseries 3. Utility Maximization (Again)}
+\begin{description}
+\item a. Set up the Lagrangian for the consumer's problem: choose $c_{1}$ and $c_{2}$ to maximize utility subject to the budget constraint, letting $\lambda$ denote the multiplier on the constraint.
+\begin{gather*}
+  \mathcal{L}(c_1,c_2,p_1,p_2,\lambda) = a\ln(c_{1}) + (1-a)\ln(c_{2}) + \lambda*[I - (p_{1}c_{1}+p_{2}c_{2})]
+\end{gather*}
+,where $\ln$ denotes the natural logarithm and where $0<a<1$ as before.
+\item b. Next, write down the conditions that, according to the Kuhn-Tucker theorem, must be satisfied by the values $c_{1}^{*}$ and $c_{2}^{*}$ that solve the consumer's problem, together with the associated value $\lambda^{*}$ for the multiplier.
+\begin{align*}
+    \mathcal{L}_{1}(c_1^*,c_2^*, \lambda^*) = \frac{a}{c_1} - \lambda p_1 = 0    \tag{1.1}\\
+    \mathcal{L}_{2}(c_1^*, c_2^*, \lambda^*) = a\ln(c_1) - \lambda p_2 = 0 .  \tag{1.2}
+\end{align*}
+\begin{align*}
+    \mathcal{L}(c_1^*, c_2^*, \lambda^*) = I - (p_1c_1+p_2c_2) \geq 0 .  \tag{2}
+\end{align*}
+\begin{align*}
+    \lambda^* \geq 0 . \tag{3}
+\end{align*}
+\begin{align*}
+    \lambda^*[I - (p_1c_1+p_2c_2] = 0  \tag{4}
+\end{align*}
+\item c. \underline{Answer}: When the complementary slackness condition (4): 
+\[\lambda^*[I - p_1c_1+p_2c_2] = 0 \] must hold and be satisfied; so if $\lambda \geq 0$, the constrain binds at $I = p_1c_1+p_2c_2$. 
+\begin{gather*}
+    (1.1) \Rightarrow \frac{a}{c_1} - \lambda p_1 = 0 \\
+    (1.2) \Rightarrow \frac{1-a}{c_2} - \lambda p_2 = 0 \\
+    so, \frac{p_1}{p_2} = \frac{ac_2}{(1-a)c_1} \Rightarrow p_1c_1 = \frac{a}{1-a}p_2c_2 \\
+    (4) \Rightarrow I = p_1c_1+p_2c_2 = \frac{1}{1-a}p_2c_2 \\
+    c_1^*(p_1,p_2,a,I) = a\frac{I}{p_1} \\ 
+    c_2^*(p_1,p_2,a,I) = (1-a)\frac{I}{p_2} \\
+    \lambda^*(p_1,p2,a,I) = \frac{1}{I}
+\end{gather*}
+\item d. Using the answer above, we get $a = p_1c_1^*/I$ and $1-a = p_2c_2^*/I$. 
+
+\end{description}
+\end{document}

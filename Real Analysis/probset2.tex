@@ -1,0 +1,161 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath}
+\usepackage{geometry}
+
+\geometry{top=1in,bottom=1in,left=1in,right=1in}
+
+\setlength{\parindent}{0in}
+\setlength{\parskip}{2ex}
+
+\begin{document}
+
+\begin{center}
+\begin{tabular*}{6.5in}{l@{\extracolsep{\fill}}r}
+\multicolumn{2}{c} {\bfseries Problem Set 2 } \\
+& \\
+Name: Sherry Peng Tian & Sep. 10, 2019 \\
+ECON 772001 - Math for Economists & Peter Ireland \\
+Boston College, Department of Economics & Fall 2019 \\
+\end{tabular*}
+\end{center}
+
+{\bfseries 1. Utility Maximization - Second-Order Conditions}
+
+\begin{description}
+\item a. As before, set up the Lagrangian for the consumer's problem, letting $\lambda$ denote the multiplier on the constraint.
+$$
+\mathcal{L}(c_1, c_2, \lambda) = a\ln(c_{1}) + (1-a)\ln(c_{2}) + \lambda[I - (p_1c_1+p_2c_2]
+$$
+, with $0<a<1$. 
+\item b. And again as before, find values $c_{1}^{*}$, $c_{2}^{*}$, and $\lambda^{*}$ that satisfy the first-order conditions given by the theorem from above. 
+\begin{align}
+    \mathcal{L_1}(c_1^*, c_2^*, \lambda^*) = a\frac{1}{c_1} - \lambda p_1 = 0  \\
+    \mathcal{L_2}(c_1^*, c_2^*, \lambda^*) = (1-a)\frac{1}{c_2} - \lambda p_2 = 0  \\
+    \mathcal{L_3}(c_1^*, c_2^*, \lambda^*) = I - p_1c_1 - p_2c_2 \geq 0  \\
+    \lambda^* \geq 0  \\
+    \lambda[I - (p_1c_1 + p_2c_2] = 0 
+\end{align}
+From (1) and (2), 
+\begin{gather*}
+\frac{p_1}{p_2} = \frac{\frac{a}{c_1}}{\frac{1-a}{c_2}} = \frac{c_2}{c_1}\frac{a}{1-a}   \\
+I = p_1c_1 + p_1c_1\frac{1-a}{a} = \frac{p_1c_1}{a}   \\
+c_1^*(a, p_1, p_2, I) = \frac{aI}{p_1}
+c_2^*(a, p_1, p_2, I) = \frac{(1-a)I}{p_2}
+\lambda^*(a, p_1, p_2, I) = I 
+\end{gather*}
+\item c. Now form the bordered Hessian matrix $H$ following the general pattern shown in the theorem, and verify that $c_{1}^{*}$, $c_{2}^{*}$, and $\lambda^{*}$ satisfy the second-order condition $\lvert H \rvert>0$ as well.
+
+$$
+H = 
+\begin{bmatrix}
+0 & G_{1}(x_{1}^{*},x_{2}^{*}) & G_{2}(x_{1}^{*},x_{2}^{*}) \\
+G_{1}(x_{1}^{*},x_{2}^{*}) & L_{11}(x_{1}^{*},x_{2}^{*},\lambda^{*}) & L_{21}(x_{1}^{*},x_{2}^{*},\lambda^{*}) \\
+G_{2}(x_{1}^{*},x_{2}^{*}) & L_{12}(x_{1}^{*},x_{2}^{*},\lambda^{*}) & L_{22}(x_{1}^{*},x_{2}^{*},\lambda^{*})
+\end{bmatrix}
+$$
+\end{description}
+
+{\bfseries 2. Complementary Slackness}
+
+Consider the constrained optimization problem
+$$
+\max_{x} -x^{2} \text{ subject to } x \geq 0,
+$$
+where $x \in \mathbf{R}$ is a single choice variable (note that there is a minus sign out in front of the objective function).
+\begin{description}
+\item a. Can you guess the solution $x^{*}$ to this problem without working through the mathematical details?
+\item b. To see how the Kuhn-Tucker theorem can lead you to this solution, set up the Lagrangian for the problem, letting $\lambda$ denote the multiplier on the constraint.
+\item c. Next, write down the conditions that, according to the Kuhn-Tucker theorem, must be satisfied by the value $x^{*}$ of $x$ that solves the problem together with the associated value $\lambda^{*}$ of $\lambda$.
+\item d. Use your results from above to solve find $x^{*}$ and $\lambda^{*}$.
+\end{description}
+
+\pagebreak
+
+{\bfseries 3. The Constraint Qualification}
+
+A consumer chooses consumption $c$ of a single good in order to maximize the utility function $U(c)$ subject to the budget constraint $I \geq pc$, where $I>0$ is the consumer's income and $p>0$ is the price of the good. Suppose that the utility function is strictly increasing, so that $U'(c)>0$ for all values of $c$.
+\begin{description}
+\item a. Can you guess the solution $c^{*}$ to this problem without working through the mathematical details?
+\item b. To see how the Kuhn-Tucker theorem leads you to this same solution, define the Lagrangian as
+$$
+L(c,\lambda) = U(c) + \lambda(I-pc),
+$$
+and use the Kuhn-Tucker conditions to find $c^{*}$ and the associated value $\lambda^{*}$.
+\item c. Now, suppose that for some reason, you decide to rewrite the consumer's budget constraint as
+$$
+(I-pc)^{3} \geq 0
+$$
+and to define the Lagrangian as
+$$
+L(c,\lambda) = U(c) + \lambda(I-pc)^3,
+$$
+since given the parameters $I$ and $p$, expressing the constraint in this alternative way does not change the economics of the problem: the same set of values for $c$ that satisfy the constraint in its simpler linear form still satisfy this more complicated version and vice-versa. Write down the Kuhn-Tucker conditions that follow from this alternative definition of the Lagrangian. Are these conditions satisfied by the same values of $c^{*}$ and $\lambda^{*}$ that you found before? Why or why not?
+\end{description}
+
+{\bfseries4. Perfect Substitutes}
+
+Suppose a consumer likes two goods, good 1 and good 2, which he or she views as perfect substitutes: perhaps they are just different brands of the same basic product. A utility function that captures this idea takes the linear form
+$$
+U(c_{1},c_{2}) = c_{1} + c_{2}.
+$$
+Let $I$ denote the consumer's income and let $p_{1}$ and $p_{2}$ denote the prices of the two goods. In this case, the linearity of the utility function means that nonnegativity conditions for $c_{1}$ and $c_{2}$ need to be imposed for the problem to make economic sense. Accordingly, associated with the consumer's problem
+$$
+\max_{c_{1},c_{2}} c_{1} + c_{2} \text{ subject to } I \geq p_{1}c_{1}+p_{2}c_{2}, \ c_{1} \geq 0, \text{ and } c_{2} \geq 0,
+$$
+define the Lagrangian
+$$
+L(c_{1},c_{2},\lambda,\mu_{1},\mu_{2}) = c_{1} + c_{2} + \lambda(I-p_{1}c_{1}-p_{2}c_{2}) + \mu_{1}c_{1} + \mu_{2}c_{2}.
+$$
+\begin{description}
+\item a. Can you guess how the optimal choices $c_{1}^{*}$ and $c_{2}^{*}$ will depend on the parameters $I$, $p_{1}$, and $p_{2}$ even without working through the mathematical details? (\emph{Hint}: Suppose you have \$10 to spend on Coke and Pepsi, and view those two brands as perfect substitutes. One brand is on sale, the other sells at full price. Which do you buy?)
+\item b. To see how the Kuhn-Tucker theorem can lead you to the same solution, write down the conditions that, according to the theorem, must be satisfied by the values of $c_{1}^{*}$ and $c_{2}^{*}$ that solve the problem together with the associated values of $\lambda^{*}$, $\mu_{1}^{*}$, and $\mu_{2}^{*}$.
+\item c. Use your results from above to derive solutions for $c_{1}^{*}$, $c_{2}^{*}$,  $\lambda^{*}$, $\mu_{1}^{*}$, and $\mu_{2}^{*}$ in terms of $I$, $p_{1}$, and $p_{2}$.
+\end{description}
+
+{\bfseries 5. Elasticities of Demand}
+
+Consider a consumer who purchases three goods to maximize utility subject to a budget constraint. Assuming that the utility function is such that nonnegativity constraints on the choice variables can be ignored, and extending the notation used above in the obvious way, the consumer's problem can be written as
+$$
+\max_{c_{1},c_{2},c_{3}} U(c_{1},c_{2},c_{3}) \text{ subject to } I \geq p_{1}c_{1}+p_{2}c_{2}+p_{3}c_{3}.
+$$
+
+Suppose that the utility function is also such that is it possible to find functions $c_{1}^{*}(p_{1},p_{2},p_{3},I)$, $c_{2}^{*}(p_{1},p_{2},p_{3},I)$, and $c_{3}^{*}(p_{1},p_{2},p_{3},I)$ that uniquely determine the optimal choices in terms of the parameters measuring prices and income (note that here, the subscripts refer to the three goods and not to the derivatives of the functions). Under most circumstances, these functions, which correspond to ``Marshallian demand curves'' for each of the three goods, can be expected to satisfy two basic conditions. First, under the assumption that the budget constraint binds at the optimum, it must be that
+\begin{equation}
+p_{1}c_{1}^{*}(p_{1},p_{2},p_{3},I) + p_{2}c_{2}^{*}(p_{1},p_{2},p_{3},I) + p_{3}c_{3}^{*}(p_{1},p_{2},p_{3},I) = I \tag{1}
+\end{equation}
+for all values of $p_{1}$, $p_{2}$, $p_{3}$, and $I$. Second, because increasing or decreasing all three prices and the consumer's income by the same proportions has no effect on the consumer's optimal choices, it must be that
+\begin{equation}
+c_{i}^{*}(rp_{1},rp_{2},rp_{3},rI) = c_{i}^{*}(p_{1},p_{2},p_{3},I) \tag{2}
+\end{equation}
+for any value of $r>0$ for each $i=1,2,3$; that is, the Marshallian demands are ``homogeneous of degree zero.''
+
+Now, for each $i=1,2,3$ and $j=1,2,3$, let
+$$
+\varepsilon_{i,j} = \frac{p_{j}}{c_{i}^{*}(p_{1},p_{2},p_{3},I)} \frac{\partial c_{i}^{*}(p_{1},p_{2},p_{3},I)}{\partial p_{j}}
+$$
+denote the elasticity of demand for good $i$ with respect to the price of good $j$, and for each $i=1,2,3$, let
+$$
+\eta_{i} = \frac{I}{c_{i}^{*}(p_{1},p_{2},p_{3},I)} \frac{\partial c_{i}^{*}(p_{1},p_{2},p_{3},I)}{\partial I}
+$$
+denote the income elasticity of demand for good $i$. Finally, for each $i=1,2,3$, let
+$$
+s_{i} = \frac{p_{i}c_{i}^{*}(p_{1},p_{2},p_{3},I)}{I}
+$$
+denote the share of his or her total income that the consumer spends on good $i$.
+\begin{description}
+\item a. Use (1) to show that for each $j=1,2,3$, the ``share-weighted'' price elasticities of demand must be related via
+$$
+s_{1}\varepsilon_{1,j} + s_{2}\varepsilon_{2,j} + s_{3}\varepsilon_{3,j} = -s_{j}.
+$$
+\item b. Use (1) to show that the ``share-weighted'' income elasticities of demand must be related via
+$$
+s_{1}\eta_{1} + s_{2}\eta_{2} + s_{3}\eta_{3} = 1.
+$$
+\item c. Finally, use (2) to show that for each $i=1,2,3$, the price and income elasticities of demand must be related via
+$$
+\varepsilon_{i,1} + \varepsilon_{i,2} + \varepsilon_{i,3} + \eta_{i} = 0.
+$$
+\end{description}
+
+\end{document}
