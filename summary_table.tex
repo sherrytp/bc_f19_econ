@@ -100,10 +100,11 @@ $$
 $$
 corresponding to the median of the predictive distribution; hence, it provides the minimum absolute error predictor, when the condition that the transformed series has to be normally distributed is needed. After a sequences of mathmatical deduction and empirical experiments, it reaches three conclusions: first is that the Box-Cox transformation can explain roughly one fifth of the series, so the implementation of Box-Cox and even log transformation can improve the forecast accuracy; the second is that the forecast comparison shows that transformations can improve the forecast accuracy rate at short horizons, but the advantage of using diminishes for the longer-term; the third is that their nonparametric approach frankly provide good guidance when researcher don't or cannot satisfy three assumptions of Box-Cox transformation. 
 
+\subsection{Time Series Seasonal Adjustment Using Regularized Singular Value Decomposition}
+The valuable components of this article is it introduces a singular value decomposition to compensate simple methods in time-series forecasting. The 
+
 \subsection{A comparison of forecasting methods for hotel room occupancy}
 The significance of this journal article is that simple methods like naïve forecasting and seasonal naïve method are investigated and evaluated as well as the accuracy evaluation measures we learned in class. Even though there are a few types of forecasting categories that have been used such as hotel room occupancy forecast, implementation of this forecasting category can be crucial because it leads to an efficient planning for, and decision making to all the hotel departments. Thus, the study aims to compare the best forecasting method for hotel room occupancy. Therefore, Seasonal Naïve, Seasonal Holt Winter’s Method and ARIMA are implemented in order to determine which forecasting method is most suitable to forecast hotel room occupancy by using secondary data from year 2012 until 2017. The selection of best method is based on three error measurements which are root mean square error (RMSE), mean absolute percentage error (MAPE) and mean absolute error (MAE). From the analysis conducted, the results show the best method to be implemented is the Seasonal Holt Winter’s Multiplicative method since it shows the lowest error for all three measurements. Furthermore, the forecast of future hotel room occupancy for year 2018 shows similar pattern as previous years. In comparing 2018 future occupancy with 2017 actual occupancy, there are some increment and decrement in hotel room occupancy for various months.
-
-\subsection{Time Series Seasonal Adjustment Using Regularized Singular Value Decomposition}
 
 \section{Model} \label{sec:model}
 \subsection{Data Source and Cleaning}
@@ -187,8 +188,8 @@ Understanding the systematic overall patterns is important, given that the liter
 Data transformation is needed to create a smooth line or a normal distribution to further help with the forecasting methods. The Box-Cox transformation gives a normal distribution and smoother trend to the initial distribution. Using the systematic calculated lambda of -0.416, it improves the distribution shape after transformation, which we could use for ARIMA model later. 
 
 \subsection{Seasonal Naïve Method}
+After trying several simple methods we have learned in class so far, since there is a clear seasonal trend from the previous decomposition, the most accurate forecast method is seasonal naïve. According to Figure 8, the residuals are normally distributed and deviating around zero, even though there is loads of white noise, showing in the autocorrelation graph. Figure 7 shows the forecast outcome based on train sets with confidence intervals of 80 and 95 percentage. 
 \begin{figure}[!tbp]
-  \centering
   \begin{minipage}[b]{0.49\textwidth}
     \includegraphics[width=\textwidth]{Pre_sn.png}
     \caption{Seasonal Naïve Forecast}
@@ -199,7 +200,7 @@ Data transformation is needed to create a smooth line or a normal distribution t
     \caption{Residuals Check for Seasonal Naïve Method}
   \end{minipage}
 \end{figure}
-After trying several simple methods we have learned in class so far, since there is a clear seasonal trend from the previous decomposition, the most accurate forecast method is seasonal naïve. According to Figure 8, the residuals are normally distributed and deviating around zero, even though there is loads of white noise, showing in the autocorrelation graph. Figure 7 shows the forecast outcome based on train sets with confidence intervals of 80 and 95 percentage. The accuracy result is following in Table 2: 
+The accuracy result is following in Table 2: 
 \begin{table}[!htbp] \centering 
   \caption{} 
   \label{} 
@@ -214,6 +215,7 @@ Test set & $11.127$ & $41.438$ & $32.193$ & $2.670$ & $29.269$ & $1.200$ & $0.54
 \end{tabular} 
 \end{table} 
 
+\pagebreak
 \section{Next Things}
 
 With more understanding of other uncertainty index and other factors, there could include some regressors and apply time-series multi-regression to the model. Additionally, data transformation and more complex forecasting methos are needed and will be learned to improve the forecast accuracy. 
