@@ -72,7 +72,7 @@ myts %>% decompose(type="multiplicative") %>%
 myts.train <- window(myts, end = c(2014,12))
 myts.test <- window(myts, start = 2015)
 autoplot(myts) + 
-  autolayer(myts.train, series = "Training") + 
+  autolayer(myts.train, series = "Train") + 
   autolayer(myts.test, series = "Test")
 
 sn <- snaive(myts.train, h = 4*12)
@@ -80,14 +80,7 @@ autoplot(sn)
 checkresiduals(sn)
 
 confusionMatrix(sn, myts.test)
-accuracy(sn, myts.test)
-
-
-autoplot(window(target2bal, start = c(2001,1))) +
-  autolayer(sn, series="Seasonal Naïve", PI=FALSE) +
-  xlab("Year") + ylab("$") +
-  ggtitle("Forecasts for quarterly beer production") +
-  guides(colour=guide_legend(title="Forecast"))
+accuracy(sn, myts.test) %>% stargazer()
 
 
 # stargazer to print out summary statistics 
