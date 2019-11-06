@@ -123,7 +123,7 @@ autoplot(uschange[, 1]) +
 elecequip %>%
   stl(s.window=7, t.window=11) %>%
   autoplot()
-# increasing the s.window with large dataset will slow the process down; s.window = either the character string "periodic" or the span (in lags) of the loess window for seasonal extraction, which should be odd and at least 7, according to Cleveland et al. This has no default. 
+# increasing the s.window with large dataset will slow the process down; s.window = either the character string "periodic" or the span (in lags) of the loss window for seasonal extraction, which should be odd and at least 7, according to Cleveland et al. This has no default. 
 # t.window = smoothing window with large range for trend; the span (in lags) of the loess window for trend extraction, which should be odd. If NULL, the default, nextodd(ceiling((1.5*period) / (1-(1.5/s.window)))), is taken.
 
 # Oct. 22 
