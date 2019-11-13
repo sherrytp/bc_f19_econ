@@ -54,7 +54,6 @@ e^2 %>% mean(na.rm = TRUE) %>% sqrt
 goog200 %>% rwf(drift = TRUE) %>% residuals -> res 
 res^2 %>% mean(na.rm = TRUE, h = 1)
 
-library(ggplot2)
 # Grouped
 value <- School$Registered
 ggplot(School, aes(fill=condition, y=value, x=School)) + 
@@ -139,3 +138,14 @@ for (i in 1:10){
   len = 1/10
   arrows(2,8,2+len, 8 - 0.8*len, col = "red")
 }
+
+
+# 11/12 ARIMA 
+library(urca)
+summary(ur.kpss(goog))
+ndiffs(goog)
+
+usmelec %>% log() %>% diff(lag=12) %>%
+  diff(lag=1) %>% autoplot()
+# stationary 
+

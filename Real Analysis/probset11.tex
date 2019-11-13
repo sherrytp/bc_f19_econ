@@ -1,0 +1,138 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath}
+\usepackage{geometry}
+
+\geometry{top=1in,bottom=1in,left=1in,right=1in}
+
+\setlength{\parindent}{0in}
+\setlength{\parskip}{2ex}
+
+\begin{document}
+
+\begin{center}
+\begin{tabular*}{6.5in}{l@{\extracolsep{\fill}}r}
+\multicolumn{2}{c} {\bfseries Problem Set 11 } \\
+& \\
+Name: Sherry Peng Tian & Nov. 12, 2019 \\
+ECON 772001 - Math for Economists & Peter Ireland \\
+Boston College, Department of Economics & Fall 2019 \\
+\end{tabular*}
+\end{center}
+
+{\bfseries 1. Natural Resource Depletion}
+\begin{description}
+\item a. Define (write down) the maximized Hamiltonian for this problem, using $\pi(t)$ to denote the multiplier corresponding to the constraint (2) for period $t$.
+
+The objective function is $$
+\max_{\{c_t\}^\infty_{t=0}, \{s_t\}^\infty_{t=0}} \int_{0}^{\infty} e^{-\rho t} \ln(c(t)) \, \mathrm{d}t, \text{ for  } t \in [0,\infty)
+$$, where the discount rate $\rho > 0$, and then subject to $$
+-c(t) \geq \dot{s}(t), \text{ for } t \in [0,\infty)
+$$ and given $$s(0) = s_0. $$
+The maximized Hamiltonian is
+\begin{equation}
+    \tilde{H}(k(t), \pi(t);t) = \max_{c(t)} e^{-\rho t}\ln(c(t)) + \pi(t)(-c(t)), \text{for} t \in [0, \infty)
+\end{equation}, for all period $t \in [0, \infty)$. 
+
+\item b. Next, write down the first-order condition for $c(t)$ and the pair of differential equations for $\pi(t)$ and $s(t)$ that, according to the maximum principle, help characterize the solution to the social planner's problem.
+
+f.o.c for $c(t)$ : 
+\begin{equation}
+    \frac{e^{-\rho t}}{c(t)} - \pi(t) = 0 
+\end{equation}, for $t \in [0, \infty)$. 
+And the differential equations are 
+\begin{equation}
+    \dot{\pi}(t) = -\tilde{H}_s(s(t), \pi(t);t) = 0 
+\end{equation}, for $t \in [0, \infty)$; 
+\begin{equation}
+    \dot{s}(t) = \tilde{H}_{\pi}(s(t), \pi(t);t) = -c(t) 
+\end{equation}, for all $t \in [1, \infty)$. 
+
+\item c. Guess and Verify. 
+
+Because the derivative of $\pi(t)$ with respect to $t$ is $\pi(t) = \pi$,  $\pi'(t) = 0$ satisfies (3). \\
+From equation (2) $ \Rightarrow  \pi(t) = \frac{e^{-\rho t}}{c(t)}$
+\begin{gather*}
+    s(t) = \left( \frac{1}{\pi \rho} \right) e^{-\rho t} + k \\ 
+    s'(t) = \left( \frac{1}{\pi \rho} \right) (-\rho) e^{-\rho t} = -\frac{e^{-\rho t}}{\pi}  
+\end{gather*}
+When $\pi(t)$ always equals to a constant $\pi$, $s'(t) = -c(t)$ satisfies (4). Therefore, these two functions in fact satisfy the differential equations. 
+
+\item d. The maximum principle also gives us two boundary conditions: the initial condition
+$$
+s(0) = s_{0} \text{ given}
+$$
+and the terminal, or transversality, condition
+$$
+\lim_{T \rightarrow \infty} \pi(T)s(T) = 0.
+$$
+\begin{gather*}
+    s(0) = \left( \frac{1}{\pi \rho} \right) + k = s_0  \\ 
+    \lim_{T \rightarrow \infty} \pi(T)s(T) = \lim_{T \rightarrow \infty} \pi s(T) = \lim_{T \rightarrow \infty} \pi [\left( \frac{1}{\pi \rho} \right) e^{-\rho T} + k] = 0 \\ 
+    \text{When T is approaching the positive infinity, large enough, } \\
+    -\rho T \text{will become negative infinity because } \rho \text{is a constant. } e^{-\rho T} \text{will approach } 0. \\ 
+    s(T) = k \text{ and  } \pi k = 0, \text{ , so  }k = 0 
+\end{gather*}
+\begin{equation}
+    \pi(t) = \frac{1}{\rho s_0} 
+\end{equation}
+\begin{equation}
+    s(t) = s_0 e^{-\rho t}
+\end{equation}
+
+\item e. Finally, combine your ``specific solutions'' to the differential equations and the boundary conditions with the first-order condition for $c(t)$ to obtain an expression that shows how the optimal choice of $c(t)$ depends on the initial resource stock $s_{0}$ and the discount rate $\rho$. Is consumption rising, falling, or staying constant over time?
+$$
+c(t) = \frac{e^{\rho t}}{\pi(t)} = s_0\rho e^{-\rho t}
+$$
+Since $\rho$ and $s_0$ are constants, when $t$ becomes larger, only $e^{-\rho t}$ will change accordingly and from positive infinity to approach 0; therefore, the consumption will fall over time. 
+\end{description}
+{\bfseries 2. Investment with Adjustment Costs}
+
+The objective function is $$
+\max_{\{K_t\}^\infty_{t=0}, \{I_t\}^\infty_{t=0}} \int_{0}^{\infty} e^{-rt} [K(t)^{\alpha} - I(t) - \frac{\phi}{2}I^{2}(t)] \, \mathrm{d}t, \text{ for  } t \in [0,\infty)
+$$, taking the initial capital stock $K(0)>0$ as given, and subject to $$
+I(t)-\delta K(t) \geq \dot{K}(t), \text{ for } t \in [0,\infty). 
+$$
+\begin{description}
+\item a. Define (write down) the maximized Hamiltonian for this problem. 
+\begin{equation}
+    \tilde{H}(K(t), \pi(t); t) = \max_{I(t)} e^{-rt}[K(t)^\alpha - I(t) - \frac{\phi}{2}I^{2}(t)] + \pi(t)[I(t) - \delta K(t)]
+\end{equation}, for all period $t \in [0, \infty)$. 
+\item b. Now write down the first-order condition and the pair of differential equations that, according to the maximum principle, are necessary conditions for the values of $I(t)$ and $K(t)$ that solve the firm's infinite-horizon problem.
+
+f.o.c. for $I(t)$: 
+\begin{equation}
+    e^{-rt}[-1 - \phi I(t)] + \pi(t) = 0
+\end{equation}, for $t \in [0, \infty)$. The differential equations are: 
+\begin{equation}
+    \dot{\pi}(t) = -\tilde{H}_K(K(t), \pi(t); t) = -[e^{-rt} \alpha K(t)^{\alpha - 1} - \delta
+    \pi(t)]
+\end{equation}
+\begin{equation}
+    \dot{K}(t) = \tilde{H}_\pi(K(t), \pi(t); t) = I(t) - \delta K(t) 
+\end{equation}, for all $t \in [0, \infty)$, where the derivatives of $\tilde{H}$ can be calculated using envelope theorem. 
+\item c. Your results from part (b) above should take the firm of a system of three equations in three unknowns. Use one of these equations to eliminate one of the variables -- the additional variable that you introduced into the problem in defining the Hamiltonian and that corresponds to the Lagrange multiplier on (3) that would appear in the optimality conditions if you had derived them using the method of Lagrange multipliers instead -- to rewrite the system as one involving two equations in two unknowns: investment $I(t)$ and the capital stock $K(t)$.
+
+If we differentiate both sides of (8) with respect to $t$ after re-arrangement: 
+\begin{gather*}
+    e^{-rt}[1+\phi I(t)] = \pi(t) \\ 
+    \pi'(t) = -re^{-rt}[1 + \phi I(t)] + e^{-rt}\phi I'(t) = \dot{\pi}(t) \\ 
+    = \delta\pi(t) - \alpha e^{-rt}K(t)^{\alpha - 1} = \delta e^{-rt}[1+\phi I(t)] - \alpha e^{-rt}K(t)^{\alpha - 1} \\
+    \text{Divided by sides by the discounting factor } e^{-rt},  \text{and } I'(t) = \dot{I}(t),\\
+    -r[1 + \phi I(t)] + \phi \dot{I}(t) = \delta[1 + \phi I(t)] - \alpha K(t)^{\alpha - 1} \\ 
+    \phi\dot{I}(t) = (r + \delta)(1 + \phi I(t)) - \alpha K(t)^{\alpha - 1}
+\end{gather*}
+Together with (10), it forms a system of two equations with two unknowns $I(t), K(t)$. 
+\item d. Using your results from part (c) above, write down a set of two equations that determine the optimal steady-state values $I^{*}$ for investment and $K^{*}$ for the capital stock. 
+
+In a stead-state, $\dot{I(t)} = 0, \dot{K}(t) = 0$; hence, denote by $K^*(t), I^*(t)$ the steady-state levels of I and K, respectively. The above differential equations (9) and (10) requires 
+\begin{gather*}
+    (r + \delta)[1 + \phi I^*] = \alpha (K^*)^{\alpha - 1} \\ 
+    I^* = \delta K^* 
+\end{gather*}
+\item e. Finally, use your results from above to draw a phase diagram that illustrates the following property of the solution to the firm's problem: starting from any value $K(0)>0$ for the initial capital stock, there is a unique value of investment $I(0)$ such that, starting from $I(0)$ and $K(0)$, the optimally-chosen paths for $I(t)$ and $K(t)$ converge to the steady-state values $I^{*}$ and $K^{*}$. In drawing this phase diagram, it may be helpful to note that while investment $I(t)$ can take on positive or negative values, depending on whether the firm is accumulating or selling off capital, the capital stock $K(t)$ itself must always remain positive when these variables are chosen optimally.
+
+
+
+\end{description}
+\end{document}
