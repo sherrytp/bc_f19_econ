@@ -1,0 +1,116 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath}
+\usepackage{geometry}
+
+\geometry{top=1in,bottom=1in,left=1in,right=1in}
+
+\setlength{\parindent}{0in}
+\setlength{\parskip}{2ex}
+
+\begin{document}
+
+\begin{center}
+\begin{tabular*}{6.5in}{l@{\extracolsep{\fill}}r}
+\multicolumn{2}{c} {\bfseries Problem Set 12 } \\
+& \\
+Name: Sherry Peng Tian & Nov. 21, 2019 \\
+ECON 772001 - Math for Economists & Peter Ireland \\
+Boston College, Department of Economics & Fall 2019 \\
+\end{tabular*}
+\end{center}
+
+{\bfseries 1. Linear-Quadratic Dynamic Programming}
+
+The objective is to maximize the function 
+$$
+\max_{\{z_t\}^{\infty}_{t=0}, \{y_t\}^{\infty}_{t=1}} \sum_{t=0}^{\infty} \beta^t(Ry_t^2 + Qz_t^2)
+$$
+for all $t = 0,1,2,...$ chosen $\{z_{t}\}_{t=0}^{\infty}$ for a flow variable and $\{y_{t}\}_{t=1}^{\infty}$ for a stock variable. This problem can be described as being ``linear-quadratic,'' because the constraint is linear and the objective function is quadratic. The discount factor lies between zero and one, $0<\beta<1$, and to make the objective function concave, it is helpful to assume that $R<0$ and $Q<0$ as well.
+\begin{description}
+\item a. Write down the Bellman equation for this problem.
+$$
+v(y_t;t) = \max_{z_t}Ry_t^2 + Qz_t^2 + \beta v(Ay_t+ Bz_t;t+1)
+$$
+\item b. Now guess that the value function also takes the quadratic, time-invariant form
+$$
+v(y_{t};t) = v(y_{t}) = Py_{t}^{2} = \max_{z_t}Ry_t^2 + Qz_t^2 + \beta P(Ay_t + Bz_t)^2 ,
+$$
+where $P$ is an unknown constant. The first-order condition for $z_{t}$ is 
+\begin{equation}
+0 = 2Qz_t + 2\beta BP(Ay_t + Bz_t), 
+\end{equation}
+and the envelope condition for $y_{t}$ is 
+\begin{equation}
+2Py_t = 2Ry_t + 2\beta AP(Ay_t + Bz_t) \iff Py_t = Ry_t + \beta AP(Ay_t + Bz_t). 
+\end{equation}
+\item c. Use your results from above to show that the unknown $P$ must satisfy
+$$
+P = R + \frac{\beta A^{2}QP}{Q+\beta B^{2} P}.
+$$
+\begin{gather*}
+(1) \Rightarrow z_t(2Q + 2\beta B^2P) = -2\beta ABPy_t    \\ 
+z_t = -\frac{2\beta ABPy_t}{2Q + 2\beta B^2P} \\ 
+\text{Take $z_t$ into (2), } Py_t = Ry_t + \beta A^2Py_t - \frac{\beta^2A^2P^2B^2y_t}{Q + \beta B^2P} \\ 
+P = R + \beta A^2P - \frac{\beta^2A^2P^2B^2}{Q + \beta B^2P} = R + \frac{\beta A^2PQ}{Q+\beta B^2P}
+\end{gather*}, which is the Riccati equation. 
+\item d. The equation for $P$ that you just derived for part (c) above is often referred to as an ``algebraic Riccati equation'', named after the Italian mathematician Jacopo Francesco Riccati who studied equations of this form in the 18th century. There are two approaches that are commonly used to solve Riccati equations. The first recognizes that the equation can be rewritten as
+$$
+\beta B^{2} P^{2} + [(1-\beta A^{2})Q-\beta B^{2}R]P - QR = 0,
+$$
+and solved using the quadratic formula. Along those lines, suppose that the specific numerical values $\beta=0.95$, $R=-0.01$, $Q=-1$, $A=1.05$, and $B=-1$ are assigned to the model's parameters, and use the quadratic formula to find the specific numerical value for $P$. In general, the quadratic formula gives two possible solutions for $P$, but for problems like this one it turns out that only one will be negative, implying that the value function, like the objective function from the original problem, is concave; then it can be shown that only the negative value of $P$ corresponds to the true solution to the original dynamic optimization problem.
+\end{description}
+A second approach to solving the Riccati equation is to convert it into a difference equation of the form
+$$
+P_{t+1} = R + \frac{\beta A^{2}QP_{t}}{Q+\beta B^{2} P_{t}}.
+$$
+Starting from any negative value of $P_{0}<0$, this difference equation can be used to compute a value for $P_{1}$. Then that value for $P_{1}$ can be used to compute $P_{2}$, and so on for all $t=0,1,2,...$. Since the difference equation is ``asymptotically stable,'' this iterative technique will converge to the same negative value of $P$ that you found using the quadratic formula in part (d) above. Try it out using a calculator or computer and see!
+
+A surprisingly large number of economic problems can be written in this linear-quadratic form once $y_{t}$ and $z_{t}$ are allowed to be vectors of state and control variables; and often, even when the problem is not immediately in the linear-quadratic form, it can be approximated by an ``LQ'' problem by taking a second-order Taylor approximation to a non-quadratic objective function and/or a first-order Taylor approximation to a set of nonlinear constraints. In those cases, $R$, $Q$, $A$, and $B$ become matrices of parameters and extensions of both the quadratic formula and the iterative methods that you used above can be applied to the matrix form of the Riccati equation to solve for $P$. For details, see the book by Lars Hansen and Thomas J. Sargent, titled \emph{Recursive Models of Dynamic Linear Economies}.
+
+{\bfseries 2. Natural Resource Depletion}
+
+Maximize the representative consumer's utility function
+$$
+\max_{\{c_t\}^{\infty}_{t=0}, \{s_t\}^{\infty}_{t=1}} \sum_{t=0}^{\infty} \beta^{t} \ln(c_{t}),
+$$
+where the discount factor satisfies $0<\beta<1$, subject to the constraints that the initial stock $s_{0}$ is given and that the stock evolves according to $s_{t}-c_{t} \geq s_{t+1}$ for all $t=0,1,2,...$.
+\begin{description}
+\item a. Write down the Bellman equation for this problem.
+$$
+v(s_t;t) = \max_{c_t}\ln(c_t) + \beta v(s_t - c_t;t+1)
+$$
+\item b. Now guess that the value function takes the time-invariant form
+$$
+v(s_{t};t) = v(s_{t}) = E + F \ln(s_{t}) = \max_{c_t}\ln(c_t) + \beta E + \beta F\ln(s_t - c_t),
+$$
+where $E$ and $F$ are constants to be determined. The first-order condition for $c_{t}$ is
+\begin{equation}
+0 = \frac{1}{c_t} - \frac{\beta F}{s_t-c_t}, 
+\end{equation}
+and the envelope condition for $s_{t}$ is 
+\begin{equation}
+\frac{F}{s_t} = \frac{\beta F}{s_t-c_t}. 
+\end{equation}
+\item c. Your first-order and envelope conditions from part (b) above can be combined with the binding resource constraint
+$s_{t+1} = s_{t} - c_{t}$ to form a system of three equations in three unknowns: the unknown constant $F$ and the unknown variables $c_{t}$ and $s_{t}$ that solve the original dynamic optimization problem. Use the equations from this system to solve for the constant $F$ in terms of the model's single parameter $\beta$.
+\begin{gather*}
+(3) \Rightarrow \beta Fc_t = s_t-c_t \iff (\beta F + 1)c_t = s_t \\ 
+\beta F + 1 = \frac{s_t}{c_t} \\ 
+\text{From (3) + (4) } \Rightarrow \frac{F}{s_t} = \frac{1}{c_t} \iff \frac{s_t}{c_t} = F \\ 
+\beta F + 1 = F \iff F = \frac{1}{1-\beta}
+\end{gather*}
+\item d. Now substitute your solution for $F$ back, 
+\begin{gather*}
+c_t = \frac{s_t}{F} = (1-\beta)s_t \\ 
+s_{t+1} = s_t - c_t = s_t - (1-\beta)s_t = \beta s_t
+\end{gather*}
+\item e. Just of the sake of completeness, go back to the Bellman equation itself and use your results to solve for the constant $E$ in terms of $\beta$ as well. The Bellman equation is: 
+\begin{gather*} 
+E + \frac{\ln(s_t)}{1-\beta} = \ln(c_t) + \beta E + \frac{\beta}{1-\beta} \ln(s_t - c_t)   \\ 
+E - \beta E = \ln(c_t) + \frac{\beta}{1-\beta} \ln(s_t - c_t) - \frac{\ln(s_t)}{1-\beta} = (1-\beta)E    \\ 
+E = \frac{1}{1-\beta}[\ln(1-\beta) + (\frac{\beta}{1-\beta})\ln(\beta)]
+\end{gather*}
+
+\end{description}
+\end{document}
