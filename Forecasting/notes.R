@@ -149,3 +149,5 @@ usmelec %>% log() %>% diff(lag=12) %>%
   diff(lag=1) %>% autoplot()
 # stationary 
 
+# MLE -> $min_{sum_{e^2_t}}$ 
+Arima()
