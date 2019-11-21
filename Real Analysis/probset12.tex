@@ -59,14 +59,17 @@ $$
 \beta B^{2} P^{2} + [(1-\beta A^{2})Q-\beta B^{2}R]P - QR = 0,
 $$
 and solved using the quadratic formula. Along those lines, suppose that the specific numerical values $\beta=0.95$, $R=-0.01$, $Q=-1$, $A=1.05$, and $B=-1$ are assigned to the model's parameters, and use the quadratic formula to find the specific numerical value for $P$. In general, the quadratic formula gives two possible solutions for $P$, but for problems like this one it turns out that only one will be negative, implying that the value function, like the objective function from the original problem, is concave; then it can be shown that only the negative value of $P$ corresponds to the true solution to the original dynamic optimization problem.
+$$
+P = \frac{-[(1-\beta A^2)Q - \beta B^2R] \pm \sqrt{[(1-\beta A^2Q) - \beta B^2R]^2 + 4\beta B^2QR}}{2\beta B^2}
+$$
 \end{description}
 A second approach to solving the Riccati equation is to convert it into a difference equation of the form
-$$
+\begin{equation}
 P_{t+1} = R + \frac{\beta A^{2}QP_{t}}{Q+\beta B^{2} P_{t}}.
-$$
+\end{equation}
 Starting from any negative value of $P_{0}<0$, this difference equation can be used to compute a value for $P_{1}$. Then that value for $P_{1}$ can be used to compute $P_{2}$, and so on for all $t=0,1,2,...$. Since the difference equation is ``asymptotically stable,'' this iterative technique will converge to the same negative value of $P$ that you found using the quadratic formula in part (d) above. Try it out using a calculator or computer and see!
 
-A surprisingly large number of economic problems can be written in this linear-quadratic form once $y_{t}$ and $z_{t}$ are allowed to be vectors of state and control variables; and often, even when the problem is not immediately in the linear-quadratic form, it can be approximated by an ``LQ'' problem by taking a second-order Taylor approximation to a non-quadratic objective function and/or a first-order Taylor approximation to a set of nonlinear constraints. In those cases, $R$, $Q$, $A$, and $B$ become matrices of parameters and extensions of both the quadratic formula and the iterative methods that you used above can be applied to the matrix form of the Riccati equation to solve for $P$. For details, see the book by Lars Hansen and Thomas J. Sargent, titled \emph{Recursive Models of Dynamic Linear Economies}.
+Therefore, plugging in the specific numerical values $\beta = 0.95, R = -0.01Q = -1, A = 1.05$ and $B = -1$ to equation(3), the formular provides two possible solutions: $P = 0.0769$ and $P = -0.1368$. Because the negative value P corresponds to the true solution to the original dynamic optimization problem, that's the answer we are looking for. 
 
 {\bfseries 2. Natural Resource Depletion}
 
@@ -95,9 +98,9 @@ and the envelope condition for $s_{t}$ is
 \item c. Your first-order and envelope conditions from part (b) above can be combined with the binding resource constraint
 $s_{t+1} = s_{t} - c_{t}$ to form a system of three equations in three unknowns: the unknown constant $F$ and the unknown variables $c_{t}$ and $s_{t}$ that solve the original dynamic optimization problem. Use the equations from this system to solve for the constant $F$ in terms of the model's single parameter $\beta$.
 \begin{gather*}
-(3) \Rightarrow \beta Fc_t = s_t-c_t \iff (\beta F + 1)c_t = s_t \\ 
+(4) \Rightarrow \beta Fc_t = s_t-c_t \iff (\beta F + 1)c_t = s_t \\ 
 \beta F + 1 = \frac{s_t}{c_t} \\ 
-\text{From (3) + (4) } \Rightarrow \frac{F}{s_t} = \frac{1}{c_t} \iff \frac{s_t}{c_t} = F \\ 
+\text{From (4) + (5) } \Rightarrow \frac{F}{s_t} = \frac{1}{c_t} \iff \frac{s_t}{c_t} = F \\ 
 \beta F + 1 = F \iff F = \frac{1}{1-\beta}
 \end{gather*}
 \item d. Now substitute your solution for $F$ back, 
