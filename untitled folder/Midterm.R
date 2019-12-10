@@ -75,13 +75,43 @@ autoplot(myts) +
   autolayer(myts.train, series = "Train") + 
   autolayer(myts.test, series = "Test")
 
-sn <- snaive(myts.train, h = 4*12)
+lambda <- BoxCox.lambda(myts.train)
+BoxCox(myts.train, lambda) %>% snaive(., h = 4*12) -> sn
 autoplot(sn)
 checkresiduals(sn)
 
 confusionMatrix(sn, myts.test)
 accuracy(sn, myts.test) %>% stargazer()
 
+# decomposition 
+
+
+
+ht <- holt(myts, h=15)
+ht2 <- holt(myts, damped=TRUE, phi = 0.9, h=15)
+autoplot(myts) +
+  autolayer(ht, series="Holt's method", PI=FALSE) +
+  autolayer(ht2, series="Damped Holt's method", PI=FALSE) +
+  ggtitle("Forecasts from Holt's method") + xlab("Year") +
+  guides(colour=guide_legend(title="Forecast"))
+autoplot(ht2)
+
+myts.train %>% 
+  hw(., seasonal = "multiplicative") -> hw
+accuracy(hw, myts.test)
+
+# no damped is better 
+myts.train %>% 
+  hw(., seasonal = "multiplicative", damped = TRUE) -> hw2
+accuracy(hw2, myts.test)
+
+myts.train %>% 
+  ets() %>% forecast(h = 15) -> et
+accuracy(et, myts.test)
+
+myts.train %>% 
+  auto.arima() %>% forecast(h = 15) -> rm
+accuracy(rm, myts.test)
 
 # stargazer to print out summary statistics 
 stargazer(summary(sn)
