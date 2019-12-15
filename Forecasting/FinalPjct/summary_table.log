@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  14 DEC 2019 20:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  15 DEC 2019 17:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -568,46 +568,46 @@ Overfull \hbox (11.61803pt too wide) in paragraph at lines 215--224
 <Pre_sn.png, id=158, 521.95pt x 363.3575pt>
 File: Pre_sn.png Graphic file (type png)
 <use Pre_sn.png>
-Package pdftex.def Info: Pre_sn.png  used on input line 255.
+Package pdftex.def Info: Pre_sn.png  used on input line 256.
 (pdftex.def)             Requested size: 150.32504pt x 104.65019pt.
 
-Underfull \hbox (badness 2261) in paragraph at lines 256--256
+Underfull \hbox (badness 2261) in paragraph at lines 257--257
 []\OT1/cmr/m/n/12 Figure 7: |Sea-sonal Na^^?^^Pve
  []
 
 <Pre_rm.png, id=159, 521.95pt x 363.3575pt>
 File: Pre_rm.png Graphic file (type png)
 <use Pre_rm.png>
-Package pdftex.def Info: Pre_rm.png  used on input line 260.
+Package pdftex.def Info: Pre_rm.png  used on input line 261.
 (pdftex.def)             Requested size: 150.32504pt x 104.65019pt.
 <Residuals.png, id=160, 521.95pt x 363.3575pt>
 File: Residuals.png Graphic file (type png)
 <use Residuals.png>
-Package pdftex.def Info: Residuals.png  used on input line 264.
+Package pdftex.def Info: Residuals.png  used on input line 265.
 (pdftex.def)             Requested size: 159.71498pt x 111.18703pt.
-[12 <./Pre_sn.png> <./Pre_rm.png> <./Residuals.png>] [13]
+[12 <./Pre_sn.png> <./Pre_rm.png> <./Residuals.png>] [13] [14]
 No file summary_table.bbl.
-[14]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 345.
- [15
+[15]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 350.
+ [16
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 345.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 350.
  (./summary_table.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 345.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 345.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 350.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 350.
 Package rerunfilecheck Info: File `summary_table.out' has not changed.
 (rerunfilecheck)             Checksum: 033FB68EAD0D955391EEA01194F382BE;1341.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 345.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 350.
  ) 
 Here is how much of TeX's memory you used:
- 8575 strings out of 492616
- 126936 string characters out of 6129482
- 238307 words of memory out of 5000000
+ 8576 strings out of 492616
+ 126943 string characters out of 6129482
+ 234307 words of memory out of 5000000
  12322 multiletter control sequences out of 15000+600000
  13802 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -626,10 +626,10 @@ live/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texl
 ive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texliv
 e/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/
 2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on summary_table.pdf (16 pages, 544062 bytes).
+Output written on summary_table.pdf (17 pages, 549385 bytes).
 PDF statistics:
- 245 PDF objects out of 1000 (max. 8388607)
- 196 compressed objects within 2 object streams
- 46 named destinations out of 1000 (max. 500000)
+ 249 PDF objects out of 1000 (max. 8388607)
+ 199 compressed objects within 2 object streams
+ 47 named destinations out of 1000 (max. 500000)
  190 words of extra memory for PDF output out of 10000 (max. 10000000)
 
