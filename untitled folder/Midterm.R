@@ -13,7 +13,7 @@ library(readxl)
 library(stargazer)
 
 # Import Data 
-df <- read_excel("Europe_Policy_Uncertainty_Data.xlsx")
+df <- read_excel("untitled folder/Europe_Policy_Uncertainty_Data.xlsx")
 df <- na_if(df, "-")
 colnames(df) <- df %>% 
   colnames(.) %>% 
@@ -52,11 +52,22 @@ target2bal[20:21] %>%
   select_if(is.numeric) %>% 
   boxplot()
 
-# Seasonal Decomposition/Transformation
+# validation 
 myts <- ts(target2bal$Greece, start = c(2001,1), frequency = 12)
-autoplot(myts)
-lambda <- BoxCox.lambda(myts)
-autoplot(BoxCox(myts, lambda))
+fr <- ts(target2bal$France, start = c(2001, 1), frequency = 12)
+gm <- ts(target2bal$Germany, start = c(2001, 1), frequency = 12)
+irl <- ts(target2bal$Ireland, start = c(2001, 1), frequency = 12)
+itl <- ts(target2bal$Italy, start = c(2001, 1), frequency = 12)
+nl <- ts(target2bal$Netherlands, start = c(2001, 1), frequency = 12)
+sp <- ts(target2bal$Spain, start = c(2001, 1), frequency = 12)
+sw <- ts(target2bal$Sweden, start = c(2001, 1), frequency = 12)
+uk <- ts(target2bal$UK, start = c(2001, 1), frequency = 12)
+au <- ts(target2bal$Austria, start = c(2001, 1), frequency = 12)
+bg <- ts(target2bal$Belgium, start = c(2001, 1), frequency = 12)
+
+lambda <- BoxCox.lambda(bg)
+autoplot(BoxCox(bg, lambda))
+autoplot(bg)
 lambda  # -0.4160249
 
 myts %>% decompose(type = "additive") %>% 
@@ -66,6 +77,13 @@ myts %>% decompose(type="multiplicative") %>%
   autoplot() + xlab("Year") +
   ggtitle("Classical multiplicative decomposition")
 
+bg.train <- window(bg, end = c(2014,12))
+bg.test <- window(bg, start = 2015) 
+bg.train %>% 
+  auto.arima() %>% forecast(h = 15) -> rm
+accuracy(rm, bg.test)
+autoplot(rm)
+checkresiduals(rm)
 
 # Seasonal naive method 
 # Split the train and test sets 
@@ -75,18 +93,7 @@ autoplot(myts) +
   autolayer(myts.train, series = "Train") + 
   autolayer(myts.test, series = "Test")
 
-lambda <- BoxCox.lambda(myts.train)
-BoxCox(myts.train, lambda) %>% snaive(., h = 4*12) -> sn
-autoplot(sn)
-checkresiduals(sn)
-
-confusionMatrix(sn, myts.test)
-accuracy(sn, myts.test) %>% stargazer()
-
-# decomposition 
-
-
-
+# Seasonal Decomposition/Transformation
 ht <- holt(myts, h=15)
 ht2 <- holt(myts, damped=TRUE, phi = 0.9, h=15)
 autoplot(myts) +
@@ -111,13 +118,25 @@ accuracy(et, myts.test)
 
 myts.train %>% 
   auto.arima() %>% forecast(h = 15) -> rm
-accuracy(rm, myts.test)
+accuracy(rm, myts.test) %>% stargazer()
+autoplot(rm)
+checkresiduals(rm)
+
+lambda <- BoxCox.lambda(myts.train)
+BoxCox(myts.train, lambda) %>% snaive(., h = 4*12) -> sn
+autoplot(sn)
+checkresiduals(sn)
+confusionMatrix(sn, myts.test)
+accuracy(sn, myts.test) %>% stargazer()
 
 # stargazer to print out summary statistics 
-stargazer(summary(sn)
+stargazer(summary(rm)
   # Type of output - text, HTML or LaTeX
           , summary = FALSE   # We want summary only
-          , flip = TRUE
-          , title = "Regression Summary" # Title of my output
+          , flip = FALSE
+          , title = "Auto ARIMA Forecasts" # Title of my output
           , digits = 2
 )
+# Regression 
+lm(myts ~ target2bal$`European-News-Index` + target2bal$`Greece-policy-uncertainty`) -> table2
+tslm(myts ~ target2bal$`European-News-Index` + target2bal$`Greece-policy-uncertainty`)

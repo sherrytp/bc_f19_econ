@@ -43,21 +43,11 @@
 \end{titlepage}
 
 \pagebreak \newpage
-
 \doublespacing
 
 %\clearpage
 %\section*{Figures} \label{sec:fig}
 %\addcontentsline{toc}{section}{Figures}
-
-%\begin{figure}[hp]
-%  \centering
-%  \includegraphics[width=.6\textwidth]{../fig/placeholder.pdf}
-%  \caption{Placeholder}
-%  \label{fig:placeholder}
-%\end{figure}
-%\clearpage
-
 
 \section{Background} \label{sec:background}
 
@@ -70,10 +60,10 @@ Since the Eurozone monetary system consists of the European Central Bank (ECB) a
 \section{Literature Review} \label{sec:literature}
 \subsection{Interpreting TARGET2 balances}
 Even though TARGET2 balance usually is seen as a safety net indicator between the ECB and national central banks, the rise in TARGET2 of German Bundesbank brings deeper concern of more appropriate interpretation and policy response. The article proposes two different ideas of the TARGET2 balances as "flow interpretation" corresponding to the current account financing and as "stock interpretation" of financing the reversal of an outstanding stock of cross-border to solve a balance of payments crisis. To sum up the arguments, the changes in TARGET2 balances come financing current account deficits, shifting stocks of financing, and hedging redonomination risks. Meanwhile, the interpretation of T-balance could be hugely different before or after the financial crisis, because from the balance sheets and identities, the pre-crisis mechanism depends mainly on the ECB's full allotment refinancing operations to maintain the balance of payments identity: 
-\begin{equation*}
+$$
 \text{Current account} + \text{Capital account} + \text{Official settlements balance} = 0 
-\end{equation*}
-Therefore, if there is a gold standard or other fixed exchange rate regime like Hong Kong SAR exists, TARGET2 balance, resulting from the changes in foreign exchange reserves, will show up. Moreover, financial risks, financing deficits, and many other reasons from financial crisis stress put reversal forces on TARGET2 to be more positive. At the end, the journal article evaluates three policy issues raised by that discussion: appropriate balance between financing and adjustment of current accounts, risks taken on by private credit exposur (or the credit reversal reversed), and discouraging positioning against euro by private parties. 
+$$
+Hence, if there is a gold standard or other fixed exchange rate regime like Hong Kong SAR exists, TARGET2 balance, resulting from the changes in foreign exchange reserves, will show up. Moreover, financial risks, financing deficits, and many other reasons from financial crisis stress put reversal forces on TARGET2 to be more positive. At the end, the journal article evaluates three policy issues raised by that discussion: appropriate balance between financing and adjustment of current accounts, risks taken on by private credit exposur (or the credit reversal reversed), and discouraging positioning against euro by private parties. 
 
 \subsection{What are the drivers of the large TARGET2 balances}
 This paper examimes the extent to which changes in national TARGET2 balances can be statiscally associated wiht cross-border private capital flows and current account (CA) balances around the financial crisis in 2007. The data used for statistically analysis is a panel quarerly dataset from 1999 to 2012 in 12 Eurozone countries. It is shown that current balance and changes in T2 balances were not related until the start of the 2007 financial crisis, and the relation has become statistically significant and economically sizeable after then. As related literature meantioned how sudden stop like financial crisis shock and private capital flows will influence the trend distribution, one of the conclusions is that there is no evidence that the institutional set-up of the ECB is fundamentally flawed or will ever lead to ever-increasing imbalances. The second conclusion is that TARGET2 balances should not be settled or limited, but instead, the focus should be harmonizing long-term collateral policies. 
@@ -106,7 +96,7 @@ The valuable components of this article is it introduces a singular value decomp
 \subsection{A comparison of forecasting methods for hotel room occupancy}
 The significance of this journal article is that simple methods like naïve forecasting and seasonal naïve method are investigated and evaluated as well as the accuracy evaluation measures we learned in class. Even though there are a few types of forecasting categories that have been used such as hotel room occupancy forecast, implementation of this forecasting category can be crucial because it leads to an efficient planning for, and decision making to all the hotel departments. Thus, the study aims to compare the best forecasting method for hotel room occupancy. Therefore, Seasonal Naïve, Seasonal Holt Winter’s Method and ARIMA are implemented in order to determine which forecasting method is most suitable to forecast hotel room occupancy by using secondary data from year 2012 until 2017. The selection of best method is based on three error measurements which are root mean square error (RMSE), mean absolute percentage error (MAPE) and mean absolute error (MAE). From the analysis conducted, the results show the best method to be implemented is the Seasonal Holt Winter’s Multiplicative method since it shows the lowest error for all three measurements. Furthermore, the forecast of future hotel room occupancy for year 2018 shows similar pattern as previous years. In comparing 2018 future occupancy with 2017 actual occupancy, there are some increment and decrement in hotel room occupancy for various months.
 
-\section{Model} \label{sec:model}
+\section{Data Preparation} \label{sec:prepare}
 \subsection{Data Source and Cleaning}
 The policy uncertainty index of various countries is derived directly from \href{https://www.policyuncertainty.com/monetary.html}{\underline{Economic Policy Uncertainty}} website and the TARGET2 balance datasets are from \href{http://www.eurocrisismonitor.com}{\underline{Institute of Empirical Economic Research}} at Osnabrück University, which is a reliable source for tracking TARGET2 balances from Janurary 1987 to June 2019, updated nearly on a monthly basis. 
 
@@ -170,9 +160,8 @@ For the purpose of prediction on TARGET2 Balance, the time intervals are parsed 
   \label{fig:split}
 \end{figure}
 
-\pagebreak
-\subsection{Transformation and Decomposition}
-Understanding the systematic overall patterns is important, given that the literature on TARGET2 imbalances raise high attention to the timeline of financial crisis. There has not been an established view of point regarding causual relationships of T2; therefore, the study could be deviated from the strucuture of the entire European Monetary System to a single particular country, which Greece is picked under these circumstances. Firstly, the additive decomposition of Greece balance from 2001 to June 2019 shows that there might not be a clear trend but there is a clear seasonality occuring every year. Moreover, the multiplicative decomposition shows the same just with a smoother trend line (Figure 5 and Figure 6). 
+\subsection{Decomposition}
+Understanding the systematic overall patterns is important, given that the literature on TARGET2 imbalances raise high attention to the timeline of financial crisis. There has not been an established view of point regarding causual relationships of T2; therefore, the study could be deviated from the strucuture of the entire European Monetary System to a single particular country, which Greece is picked under these circumstances. Firstly, the additive decomposition of Greece balance from 2001 to June 2019 shows that there might not be a clear trend but there is a clear seasonality occuring every year. Moreover, the multiplicative decomposition shows the same just with a smoother trend line (Figure 5 and Figure 6). More complicated decomposition models such as X11, SEATS, and STL resulted in similar seasonality and will be discussed later in the model section. 
 \begin{figure}[!tbp]
   \centering
   \begin{minipage}[b]{0.49\textwidth}
@@ -186,12 +175,26 @@ Understanding the systematic overall patterns is important, given that the liter
   \end{minipage}
 \end{figure}
 
-Data transformation is needed to create a smooth line or a normal distribution to further help with the forecasting methods. The Box-Cox transformation gives a normal distribution and smoother trend to the initial distribution. Using the systematic calculated lambda of -0.416, it improves the distribution shape after transformation, which we could use for ARIMA model later. 
-
-\subsection{Seasonal Naïve Method}
-After trying several simple methods we have learned in class so far, since there is a clear seasonal trend from the previous decomposition, the most accurate forecast method is seasonal naïve. According to Figure 8, the residuals are normally distributed and deviating around zero, even though there is loads of white noise, showing in the autocorrelation graph. Figure 7 shows the forecast outcome based on train sets with confidence intervals of 80 and 95 percentage. The accuracy result is following in Table 2: 
+\subsection{Transformation }
+Data transformation is needed to create a smooth line or a normal distribution to further help with the forecasting methods. The Box-Cox transformation gives a normal distribution and smoother trend to the initial distribution. Using the systematic calculated lambda of -0.416, it improves the distribution shape after transformation. However, the lambdas are different for the series of various countries like showing below. Other than Austria and Belgium, the intial data plots relatively normal already, and the Box-Cox transformation improves the smoothness at a small level with a small absolute lambda value. However, for balances of Austria and Belgium, because there are extreme values forming a peak, the transformation helps the learning and forecasting process remarkebly. 
 \begin{table}[!htbp] \centering 
-  \caption{} 
+  \caption{Box-Cox Transformation Lambda} 
+  \label{} 
+      \resizebox{1\textwidth}{!}{
+\begin{tabular}{@{\extracolsep{5pt}} cccccccccccc} 
+\hline \\[-1.8ex] 
+Series & France & Germany & Greece & Ireland & Italy & Netherlands & Spain & Sweden & U.K. & Austria & Belgium \\ 
+\hline \\[-1.8ex] 
+Lambda & $0.3255$ & $0.0205$ & $-0.4160$ & $0.3494$ & $0.1669$ & $0.0395$ & $-0.4810$ & $0.0879$ & $-0.1372$ & $1.8259$ & $1.9999$\\  
+\hline \\[-1.8ex] 
+\end{tabular}} 
+\end{table} 
+
+\section{Model Testing}
+\subsection{Seasonal Naïve Method}
+Since there is a clear seasonal trend from the previous decomposition, the most accurate forecast method tried before the midterm is the seasonal naïve. According to the residual graph and predicting graph, the residuals are normally distributed and deviating around zero, even though there is loads of white noise, showing in the autocorrelation graph. The accuracy result is following in Table 3:
+\begin{table}[!htbp] \centering 
+  \caption{Seasonal Naïve Model Accuracy} 
   \label{} 
 \begin{tabular}{@{\extracolsep{5pt}} ccccccccc} 
 \\[-1.8ex]\hline 
@@ -204,49 +207,136 @@ Test set & $11.127$ & $41.438$ & $32.193$ & $2.670$ & $29.269$ & $1.200$ & $0.54
 \end{tabular} 
 \end{table} 
 
-\pagebreak
+\subsection{ARIMA Method}
+Overall, I attempted to apply STL(Seasonal and Trend decomposition using Loess), ETS(error, trend, seasonal), Holt-Winter's, and etc. STL and ETS improves the results by a little bit with better AIC, MAE, and RMSE; in result, ARIMA turns out to be the best output maybe because of the seasonal smoothy trend. `auto.arima()' came up to become the best `arima()' model as $(2,1,1)$ and it improves the train-test accuracy by the most.  The accuracy result is shown in Table 4: 
+\begin{table}[!htbp] \centering 
+  \caption{Auto ARIMA Model Accuracy} 
+  \label{} 
+\begin{tabular}{@{\extracolsep{5pt}} ccccccccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & ME & RMSE & MAE & MPE & MAPE & MASE & ACF1 & Theil's U \\ 
+\hline \\[-1.8ex] 
+Training set & $1.384$ & $20.855$ & $15.676$ & $$-$2.236$ & $15.512$ & $0.584$ & $$-$0.010$ & $$ \\ 
+Test set & $11.959$ & $27.465$ & $21.439$ & $5.146$ & $16.164$ & $0.799$ & $0.543$ & $1.158$ \\ 
+\hline \\[-1.8ex] 
+\end{tabular} 
+\end{table} 
+\newline My understanding to analyze the reason why other models are below the usefulness of ARIMA is that firstly, they fail to put enough weights on the seasonality, and that secondly, the prediction on remainders are not as powerful as ARIMA. The residual plots show that there is minimally white noise and autocorrelation, and all residuals are scattered around the x-axis and the distribution of residuals are nornally shaped. Moreover, the same methodology applies to the seasonal series of balances in other countries other than Austria and Belgium, and normally the RMSE are kept under $30$ errors. Even for those two countries, ARIMA model still predicts better than any other model but the error ranges spike much higher due to the historical fluctuation. Additionally, the residual and ACF graphs indicate that the residuals are within the critical value range for all series. Therefore, Table 5 shows the best predictions are calculated based on the train dataset. 
+\begin{table}[!htbp] \centering 
+  \caption{ARIMA Forecasts} 
+  \label{} 
+\begin{tabular}{@{\extracolsep{5pt}} cccccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & Point Forecast & Lo 80 & Hi 80 & Lo 95 & Hi 95 \\ 
+\hline \\[-1.8ex] 
+Jan 2015 & $133.22$ & $106.08$ & $160.35$ & $91.72$ & $174.72$ \\ 
+Feb 2015 & $129.70$ & $99.56$ & $159.84$ & $83.60$ & $175.80$ \\ 
+Mar 2015 & $121.80$ & $89.41$ & $154.20$ & $72.27$ & $171.34$ \\ 
+Apr 2015 & $117.26$ & $83.75$ & $150.77$ & $66.01$ & $168.51$ \\ 
+May 2015 & $114.72$ & $80.52$ & $148.93$ & $62.41$ & $167.03$ \\ 
+Jun 2015 & $112.84$ & $78.21$ & $147.48$ & $59.88$ & $165.81$ \\ 
+Jul 2015 & $111.13$ & $76.22$ & $146.05$ & $57.73$ & $164.53$ \\ 
+Aug 2015 & $110.45$ & $75.34$ & $145.56$ & $56.75$ & $164.15$ \\ 
+Sep 2015 & $109.60$ & $74.34$ & $144.85$ & $55.68$ & $163.52$ \\ 
+Oct 2015 & $110.14$ & $74.77$ & $145.50$ & $56.05$ & $164.23$ \\ 
+Nov 2015 & $107.77$ & $72.32$ & $143.23$ & $53.55$ & $162.00$ \\ 
+Dec 2015 & $111.58$ & $76.05$ & $147.11$ & $57.24$ & $165.92$ \\ 
+Jan 2016 & $109.42$ & $73.71$ & $145.13$ & $54.80$ & $164.04$ \\ 
+Feb 2016 & $109.15$ & $73.33$ & $144.97$ & $54.37$ & $163.93$ \\ 
+Mar 2016 & $108.61$ & $72.70$ & $144.53$ & $53.69$ & $163.54$ \\ 
+\hline \\[-1.8ex] 
+\end{tabular} 
+\end{table} 
+
 \begin{figure}[!tbp]
-  \begin{minipage}[b]{0.49\textwidth}
+  \begin{minipage}[b]{0.32\textwidth}
     \includegraphics[width=\textwidth]{Pre_sn.png}
-    \caption{Seasonal Naïve Forecast}
+    \caption{Seasonal Naïve Forecast of Greece Train}
   \end{minipage}
   \hfill
-  \begin{minipage}[b]{0.49\textwidth}
-    \includegraphics[width=\textwidth]{residuals.png}
-    \caption{Residuals Check for Seasonal Naïve Method}
+  \begin{minipage}[b]{0.32\textwidth}
+    \includegraphics[width=\textwidth]{Pre_rm.png}
+    \caption{ARIMA Forecast of Greece Train}
+  \end{minipage}
+  \begin{minipage}[b]{0.34\textwidth}
+    \includegraphics[width=\textwidth]{Residuals.png}
+    \caption{}
   \end{minipage}
 \end{figure}
 
-\section{Next Things}
+\subsection{Time-series Regression}
+As covered before the midterm, I intend to include some regressors and apply time-series multi-regression to the model with more understanding of other uncertainy index and political issues. The most related political news index are European news index and Greece news index to the series of Greece data. For better implementation and illustration, I trained the regression model on the overall data till June, 2019 rather than only the train set. Hence, the ts-regression equation writes like: 
+$$
+\text{Greece bal} = \beta_0 + \beta_1 * \text{ENI} + \beta_2 * \text{GPU} + \epsilon
+$$
+As a result, the $\beta$s are statistically significant at the $95\%$ to make further predictions. The coefficent of $\beta_1$ is $0.079$, meaning for each incrementation of 1 unit of European News Index (provided by the academic and news instituition), the Greece TARGET2 Balance will increase by $0.079$; meanwhile, the coefficient of $\beta_2$ is $0.264$, meaning for each additional 1 unit of Greece Policy Uncertainty Index, the balance will increase by $0.264$, which absolutely makes sense that the Greece Policy News places more weight on the money supply crisis within the nation. 
+\begin{table}[!htbp] \centering 
+  \caption{Time-Series Regression of Greece Bal} 
+  \label{} 
+\begin{tabular}{@{\extracolsep{5pt}}lc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{1}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-2} 
+\\[-1.8ex] & myts \\ 
+\hline \\[-1.8ex] 
+ `European-News-Index` & 0.079$^{***}$ \\ 
+  & (0.023) \\ 
+  & \\ 
+ `Greece-policy-uncertainty` & 0.264$^{***}$ \\ 
+  & (0.025) \\ 
+  & \\ 
+ Constant & 57.932$^{***}$ \\ 
+  & (3.350) \\ 
+  & \\ 
+\hline \\[-1.8ex] 
+Observations & 222 \\ 
+R$^{2}$ & 0.522 \\ 
+Adjusted R$^{2}$ & 0.518 \\ 
+Residual Std. Error & 18.532 (df = 219) \\ 
+F Statistic & 119.579$^{***}$ (df = 2; 219) \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{1}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\end{tabular} 
+\end{table} 
 
-With more understanding of other uncertainty index and other factors, there could include some regressors and apply time-series multi-regression to the model. Additionally, data transformation and more complex forecasting methos are needed and will be learned to improve the forecast accuracy. 
+\section{Conclusion} \label{sec:conclusion}
+Overall, the predictative analysis of TARGET2 gives out a positive lookout for the future in the Eurozone and global money economy. 
+
+
+%\begin{figure}[hp]
+%  \centering
+%  \includegraphics[width=.6\textwidth]{../fig/placeholder.pdf}
+%  \caption{Placeholder}
+%  \label{fig:placeholder}
+%\end{figure}
+%\clearpage
+
 %\section{Results} \label{sec:result}
-
-%\section{Conclusion} \label{sec:conclusion}
-
 %\section*{Tables} \label{sec:tab}
 %\addcontentsline{toc}{section}{Tables}
-\singlespacing
+%\singlespacing
 \setlength\bibsep{0pt}
 \bibliographystyle{my-style}
 \bibliography{APA}
 
 \clearpage
-
 \onehalfspacing
-
 \section*{Appendix: References} \label{sec:references}
 \addcontentsline{toc}{section}{Appendix: References}
 
-Baker, Scott, Bloom, Nicholas and Davis, Steven, (2016), Measuring Economic Policy Uncertainty, The Quarterly Journal of Economics, 131, issue 4, p. 1593-1636, https://EconPapers.repec.org/RePEc:oup:qjecon:v:131:y:2016:i:4:p:1593-1636..
+Baker, Scott, Bloom, Nicholas and Davis, Steven, (2016), Measuring Economic Policy Uncertainty, The Quarterly Journal of Economics, 131, issue 4, p. 1593-1636, \newline https://EconPapers.repec.org/RePEc:oup:qjecon:v:131:y:2016:i:4:p:1593-1636..
 
 Cecchetti, Stephen G. and McCauley, Robert N. and McGuire, Patrick M., Interpreting TARGET2 Balances (December 1, 2012). BIS Working Paper No. 393. Available at SSRN: https://ssrn.com/abstract=2195965 
 
 Desa, N., and Marzuki. (2019). A comparison of forecasting methods for hotel room occupancy. AIP Conference Proceedings, 2138(1), The 4th Innovation And Analytics Conference and Exhibition (Iace 2019), Kedah, Malaysia (25–28 March 2019):.
 
-Juan, Barredo-Zuriarrain and Ricardo Molero-Simarro and Alejandro Quesada-Solana, 2017. "Euro-dependence — a peripheral look beyond the Monetary union : a proposal of reform of the TARGET2," Post-Print halshs-01585803, HAL. <https://ideas.repec.org/p/hal/journl/halshs-01585803.html>. 
+Juan, Barredo-Zuriarrain and Ricardo Molero-Simarro and Alejandro Quesada-Solana, 2017. "Euro-dependence — a peripheral look beyond the Monetary union : a proposal of reform of the TARGET2," Post-Print halshs-01585803, HAL. \newline https://ideas.repec.org/p/hal/journl/halshs-01585803.html. 
 
-Raphael A. Auer, 2013. "What Drives TARGET2 Balances? Evidence from a Panel Analysis," CESifo Working Paper Series 4216, CESifo Group Munich. <https://ideas.repec.org/p/ces/ceswps/\_4216.html>. 
+Raphael A. Auer, 2013. "What Drives TARGET2 Balances? Evidence from a Panel Analysis," CESifo Working Paper Series 4216, CESifo Group Munich. \newline https://ideas.repec.org/p/ces/ceswps/\_4216.html. 
 
 Wei Lin, Jianhua Z. Huang and Tucker McElroy (2019) Time Series Seasonal Adjustment Using Regularized Singular Value Decomposition, Journal of Business and Economic Statistics, DOI: 10.1080/07350015.2018.1515081
 

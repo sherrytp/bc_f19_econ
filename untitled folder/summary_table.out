@@ -6,9 +6,13 @@
 \BOOKMARK [2][-]{subsection.2.4}{Does the Box\205Cox transformation help in forecasting macroeconomic time series? }{section.2}% 6
 \BOOKMARK [2][-]{subsection.2.5}{Time Series Seasonal Adjustment Using Regularized Singular Value Decomposition}{section.2}% 7
 \BOOKMARK [2][-]{subsection.2.6}{A comparison of forecasting methods for hotel room occupancy}{section.2}% 8
-\BOOKMARK [1][-]{section.3}{Model}{}% 9
+\BOOKMARK [1][-]{section.3}{Data Preparation}{}% 9
 \BOOKMARK [2][-]{subsection.3.1}{Data Source and Cleaning}{section.3}% 10
-\BOOKMARK [2][-]{subsection.3.2}{Transformation and Decomposition}{section.3}% 11
-\BOOKMARK [2][-]{subsection.3.3}{Seasonal Na\357ve Method}{section.3}% 12
-\BOOKMARK [1][-]{section.4}{Next Things}{}% 13
-\BOOKMARK [1][-]{section*.8}{Appendix: References}{}% 14
+\BOOKMARK [2][-]{subsection.3.2}{Decomposition}{section.3}% 11
+\BOOKMARK [2][-]{subsection.3.3}{Transformation }{section.3}% 12
+\BOOKMARK [1][-]{section.4}{Model Testing}{}% 13
+\BOOKMARK [2][-]{subsection.4.1}{Seasonal Na\357ve Method}{section.4}% 14
+\BOOKMARK [2][-]{subsection.4.2}{ARIMA Method}{section.4}% 15
+\BOOKMARK [2][-]{subsection.4.3}{Time-series Regression}{section.4}% 16
+\BOOKMARK [1][-]{section.5}{Conclusion}{}% 17
+\BOOKMARK [1][-]{section*.12}{Appendix: References}{}% 18

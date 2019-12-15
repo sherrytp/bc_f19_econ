@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  2 NOV 2019 05:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  14 DEC 2019 20:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -371,6 +371,18 @@ Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
 
 LaTeX Warning: Label `' multiply defined.
 
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
 )
 \openout1 = `summary_table.aux'.
 
@@ -500,108 +512,104 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <7> not available
 {/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [1] [2]
  [3] [4]
 [5]
-Overfull \hbox (63.09363pt too wide) in paragraph at lines 111--112
+Overfull \hbox (63.09363pt too wide) in paragraph at lines 101--102
 []\OT1/cmr/m/n/12 The pol-icy un-cer-tainty in-dex of var-i-ous coun-tries is d
 e-rived di-rectly from []$[]$[]
  []
 
 
-Overfull \hbox (14.49973pt too wide) in paragraph at lines 111--112
+Overfull \hbox (14.49973pt too wide) in paragraph at lines 101--102
 \OT1/cmr/m/n/12 web-site and the TAR-GET2 bal-ance datasets are from []$[]$[]
  []
 
 [6]
-<Uncertainty.png, id=105, 1179.40625pt x 737.75626pt>
+<Uncertainty.png, id=121, 1179.40625pt x 737.75626pt>
 File: Uncertainty.png Graphic file (type png)
 <use Uncertainty.png>
-Package pdftex.def Info: Uncertainty.png  used on input line 148.
+Package pdftex.def Info: Uncertainty.png  used on input line 138.
 (pdftex.def)             Requested size: 469.75502pt x 293.84772pt.
-<Bal1.jpeg, id=107, 522.95375pt x 363.3575pt>
+<Bal1.jpeg, id=123, 522.95375pt x 363.3575pt>
 File: Bal1.jpeg Graphic file (type jpg)
 <use Bal1.jpeg>
-Package pdftex.def Info: Bal1.jpeg  used on input line 156.
+Package pdftex.def Info: Bal1.jpeg  used on input line 146.
 (pdftex.def)             Requested size: 234.8775pt x 163.19887pt.
-<Bal2.jpeg, id=108, 522.95375pt x 363.3575pt>
+<Bal2.jpeg, id=124, 522.95375pt x 363.3575pt>
 File: Bal2.jpeg Graphic file (type jpg)
 <use Bal2.jpeg>
-Package pdftex.def Info: Bal2.jpeg  used on input line 161.
+Package pdftex.def Info: Bal2.jpeg  used on input line 151.
 (pdftex.def)             Requested size: 187.89914pt x 130.5591pt.
-<split.jpeg, id=109, 522.95375pt x 363.3575pt>
+<split.jpeg, id=125, 522.95375pt x 363.3575pt>
 File: split.jpeg Graphic file (type jpg)
 <use split.jpeg>
-Package pdftex.def Info: split.jpeg  used on input line 168.
+Package pdftex.def Info: split.jpeg  used on input line 158.
 (pdftex.def)             Requested size: 375.80544pt x 261.1182pt.
- [7] [8 <./Uncertainty.png>] [9 <./Bal1.jpeg> <./Bal2.jpeg> <./split.jpeg>]
-<Additive.png, id=127, 522.95375pt x 657.45625pt>
+<Additive.png, id=126, 522.95375pt x 657.45625pt>
 File: Additive.png Graphic file (type png)
 <use Additive.png>
-Package pdftex.def Info: Additive.png  used on input line 179.
+Package pdftex.def Info: Additive.png  used on input line 168.
 (pdftex.def)             Requested size: 230.18253pt x 289.392pt.
-<Multiplicative.png, id=128, 522.95375pt x 657.45625pt>
+<Multiplicative.png, id=127, 522.95375pt x 657.45625pt>
 File: Multiplicative.png Graphic file (type png)
 <use Multiplicative.png>
-Package pdftex.def Info: Multiplicative.png  used on input line 184.
+Package pdftex.def Info: Multiplicative.png  used on input line 173.
 (pdftex.def)             Requested size: 230.18253pt x 289.392pt.
-
+ [7] [8 <./Uncertainty.png>] [9 <./Bal1.jpeg> <./Bal2.jpeg> <./split.jpeg>]
 [10 <./Additive.png> <./Multiplicative.png>]
-Overfull \hbox (11.4486pt too wide) in paragraph at lines 196--205
+Overfull \hbox (11.4486pt too wide) in paragraph at lines 199--208
+ [][] 
+ []
+
+
+Overfull \hbox (11.61803pt too wide) in paragraph at lines 215--224
  [][] 
  []
 
 [11]
-<Pre_sn.png, id=141, 522.95375pt x 657.45625pt>
+<Pre_sn.png, id=158, 521.95pt x 363.3575pt>
 File: Pre_sn.png Graphic file (type png)
 <use Pre_sn.png>
-Package pdftex.def Info: Pre_sn.png  used on input line 210.
-(pdftex.def)             Requested size: 230.18253pt x 289.392pt.
-<residuals.png, id=142, 522.95375pt x 657.45625pt>
-File: residuals.png Graphic file (type png)
-<use residuals.png>
-Package pdftex.def Info: residuals.png  used on input line 215.
-(pdftex.def)             Requested size: 230.18253pt x 289.392pt.
+Package pdftex.def Info: Pre_sn.png  used on input line 255.
+(pdftex.def)             Requested size: 150.32504pt x 104.65019pt.
 
+Underfull \hbox (badness 2261) in paragraph at lines 256--256
+[]\OT1/cmr/m/n/12 Figure 7: |Sea-sonal Na^^?^^Pve
+ []
+
+<Pre_rm.png, id=159, 521.95pt x 363.3575pt>
+File: Pre_rm.png Graphic file (type png)
+<use Pre_rm.png>
+Package pdftex.def Info: Pre_rm.png  used on input line 260.
+(pdftex.def)             Requested size: 150.32504pt x 104.65019pt.
+<Residuals.png, id=160, 521.95pt x 363.3575pt>
+File: Residuals.png Graphic file (type png)
+<use Residuals.png>
+Package pdftex.def Info: Residuals.png  used on input line 264.
+(pdftex.def)             Requested size: 159.71498pt x 111.18703pt.
+[12 <./Pre_sn.png> <./Pre_rm.png> <./Residuals.png>] [13]
 No file summary_table.bbl.
-[12 <./Pre_sn.png> <./residuals.png>]
-Overfull \hbox (278.03403pt too wide) in paragraph at lines 241--242
-\OT1/cmr/m/n/12 cer-tainty, The Quar-terly Jour-nal of Eco-nomics, 131, is-sue 
-4, p. 1593-1636, https://EconPapers.repec.org/RePEc:oup:qjecon:v:131:y:2016:i:4
-:p:1593-
- []
-
-
-Overfull \hbox (62.5395pt too wide) in paragraph at lines 247--248
-\OT1/cmr/m/n/12 form of the TAR-GET2," Post-Print halshs-01585803, HAL. <https:
-//ideas.repec.org/p/hal/journl/halshs-
- []
-
-
-Overfull \hbox (123.52533pt too wide) in paragraph at lines 249--250
-\OT1/cmr/m/n/12 y-sis," CE-Sifo Work-ing Pa-per Se-ries 4216, CE-Sifo Group Mu-
-nich. <https://ideas.repec.org/p/ces/ceswps/[]4216.html>. 
- []
-
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 255.
-[13
+[14]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 345.
+ [15
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 255.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 345.
  (./summary_table.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 255.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 255.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 345.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 345.
 Package rerunfilecheck Info: File `summary_table.out' has not changed.
-(rerunfilecheck)             Checksum: 4FFD0C8E8E507AE77650A49290D4409F;1101.
+(rerunfilecheck)             Checksum: 033FB68EAD0D955391EEA01194F382BE;1341.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 255.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 345.
  ) 
 Here is how much of TeX's memory you used:
- 8553 strings out of 492616
- 126640 string characters out of 6129482
- 233224 words of memory out of 5000000
- 12312 multiletter control sequences out of 15000+600000
- 13455 words of font info for 53 fonts, out of 8000000 for 9000
+ 8575 strings out of 492616
+ 126936 string characters out of 6129482
+ 238307 words of memory out of 5000000
+ 12322 multiletter control sequences out of 15000+600000
+ 13802 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  36i,11n,39p,1662b,364s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
@@ -616,11 +624,12 @@ l/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/
 texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/tex
 live/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texl
 ive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texliv
-e/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on summary_table.pdf (14 pages, 523514 bytes).
+e/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/
+2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on summary_table.pdf (16 pages, 544062 bytes).
 PDF statistics:
- 207 PDF objects out of 1000 (max. 8388607)
- 163 compressed objects within 2 object streams
- 36 named destinations out of 1000 (max. 500000)
- 153 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 245 PDF objects out of 1000 (max. 8388607)
+ 196 compressed objects within 2 object streams
+ 46 named destinations out of 1000 (max. 500000)
+ 190 words of extra memory for PDF output out of 10000 (max. 10000000)
 
