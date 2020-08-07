@@ -12,7 +12,7 @@ Everything shown under this folder is credited to STP. If you would like to use 
 
 * Parallel computing 
 * Eonum interview project 
-* qProject, which is kept just for my own record, pls not check or quote 
+* qProject, which is kept just for my own record, pls do not check or quote 
 
 ## Reference 
 1. [Forecasting: Principles and Practice](https://otexts.com/fpp2/) 
