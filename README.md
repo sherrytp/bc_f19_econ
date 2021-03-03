@@ -23,19 +23,3 @@ Garrett Grolemund and Hadley Wickham. (2017)
 
 3. [An Introduction to Statistical Learning with Applications in R](http://faculty.marshall.usc.edu/gareth-james/ISL/index.html) 
 Gareth James, Daniela Witten, Trevor Hastie and Robert Tibshirani. (2009) 
-
-## Links 
-
-https://www.machinelearningplus.com/time-series/time-series-analysis-python/
-https://towardsdatascience.com/an-end-to-end-project-on-time-series-analysis-and-forecasting-with-python-4835e6bf050b
-https://chartio.com/resources/tutorials/how-to-check-if-any-value-is-nan-in-a-pandas-dataframe/
-
-https://www.frbsf.org/economic-research/files/wp2019-17.pdf
-
-https://www.nber.org/papers/w23285.pdf
-
-robots: https://ifr.org/downloads/press2018/Executive%20Summary%20WR%202019%20Industrial%20Robots.pdf world inequality database: https://wid.world/country/usa/
-
-https://ourworldindata.org/income-inequality https://ourworldindata.org/global-economic-inequality https://ourworldindata.org/technological-progress#other-laws-of-exponential-technological-progress https://ourworldindata.org/technology-adoption https://ourworldindata.org/trade-and-globalization https://www.stlouisfed.org/publications/regional-economist/second-quarter-2019/rise-automation-robots 
-
-
