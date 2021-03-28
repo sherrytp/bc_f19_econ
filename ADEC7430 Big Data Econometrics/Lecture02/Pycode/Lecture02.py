@@ -10,20 +10,20 @@ Created on Thu Jan 24 20:03:24 2019
 # OS - submodules/path/join
     #eg. (os.path.join)
 # pandas
-# scci
+# scipy
 # onspy
 
 #%% Setup
 import os
 
-projFld = "C:/Users/RV/Documents/Teaching/2019_01_Spring/ADEC7430_Spring2019/Lecture02"
+
+# projFld = "C:/Users/RV/Documents/Teaching/2019_01_Spring/ADEC7430_Spring2019/Lecture02"
+projFld = '/Users/sherrytp/Desktop/bc_f19_econ/ADEC7430 Big Data Econometrics/Lecture02'
 codeFld = os.path.join(projFld, "PyCode")
-fnsFld = os.path.join(codeFld,"_Functions")
+fnsFld = os.path.join(codeFld, "_Functions")
 outputFld = os.path.join(projFld, "Output")
 rawDataFld = os.path.join(projFld, "RawData")
 savedDataFld = os.path.join(projFld, "SavedData")
-
-
 
 #%% load some functions
 fnList = ["fn_logMyInfo"] # this is a list
@@ -31,10 +31,11 @@ for fn in fnList:
     exec(open(os.path.join(fnsFld, fn + ".py")).read())
 # Explain: name, extension name, read+write
 # create also a file where we will log some data
-logf = os.path.join(projFld, "logfile.csv")
+logf = os.path.join(rawDataFld, "logfile.csv")
 
 # test writing to log
-fn_logMyInfo("test writing to log", useConsole = True, useFile = logf)
+from _Functions.fn_logMyInfo import fn_logMyInfo
+fn_logMyInfo("test writing to log", useConsole=True, useFile=logf)
 
 # can we enhance what we write? How about we add a timestamp?
 
@@ -83,8 +84,8 @@ fn_logMyInfo("\n" + nowdt() + "," + " second test writing to log", useFile = log
 # See slides - why do we need this split?
 
 # point to the files
-rawTrainFile = os.path.join(rawDataFld,"Lecture2_train.csv")
-rawTestFile  = os.path.join(rawDataFld,"Lecture2_test.csv")
+rawTrainFile = os.path.join(rawDataFld, "Lecture2_train.csv")
+rawTestFile  = os.path.join(rawDataFld, "Lecture2_test.csv")
 
 #%% Pandas - transformation and data management, package
 # read them into pandas DataFrame
@@ -104,9 +105,9 @@ rawTrain.shape # how many rows, how many columns?
 rawTrain.head(7) # notice the dots?
 
 # let's expand the view - need options for pandas printout
-pd.set_option('display.width',1000)
-pd.set_option('max_colwidth',500)
-pd.set_option('display.max_columns',12)
+pd.set_option('display.width', 1000)
+pd.set_option('max_colwidth', 500)
+pd.set_option('display.max_columns', 12)
 rawTrain.head(7) # does it look better? did the dots vanish or are they still there?
 
 # What is rawTrain?
@@ -121,7 +122,7 @@ rawTrain.dtypes # to think... if CSV is a text file, how did pandas figure out t
 # int64 doesn't allow for missing values
 
 #L Let's force pandas to read everything as a character
-rawTrain_c = pd.read_csv(rawTrainFile, sep = ',', dtype = object)
+rawTrain_c = pd.read_csv(rawTrainFile, sep=',', dtype=object)
 rawTrain_c.dtypes
 rawTrain_c.head(5)
 
@@ -157,7 +158,7 @@ rTrainFile = os.path.join(savedDataFld, "rTrain.pkl")
 rTrain.to_pickle(rTrainFile)
 rTrain.to_csv(rTrainFile+".csv")
 # go open the last saved CSV file; what's with the first column?
-rTrain.to_csv(rTrainFile + ".csv", index = None)
+rTrain.to_csv(rTrainFile + ".csv", index=None)
 # go try again - did that column vanish?
 
 #%% distribution of ages?
@@ -232,7 +233,7 @@ sns.distplot(rTrain['Age'], bins=20)
 # hunch: this is probably due to missing values; let's try to remove them before plotting
 AgeCond = rTrain['Age'].isnull() # define missing condition
 AgeCond.value_counts() # missings vs non-missings
-sns.distplot(rTrain.loc[~AgeCond,'Age'], bins=20)
+sns.distplot(rTrain.loc[~AgeCond, 'Age'], bins=20)
 
 # a better view
 sns.violinplot(rTrain['Age'])
@@ -253,14 +254,14 @@ rTrain = rTrain.drop(columns=['Cabin'])
 sns.pairplot(rTrain.loc[~AgeCond]) # aha, a bit better?
 # note that is works for all columns - both numeric and character!
 
-sns.pairplot(rTrain.loc[~AgeCond], kind = "scatter", hue="Survived", markers=["o","s"], palette = "Set2")
-sns.pairplot(rTrain.loc[~AgeCond], kind = "scatter", hue="Survived", plot_kws=dict(s=80, edgecolor="white", linewidth = 2.5))
+sns.pairplot(rTrain.loc[~AgeCond], kind="scatter", hue="Survived", markers=["o", "s"], palette="Set2")
+sns.pairplot(rTrain.loc[~AgeCond], kind="scatter", hue="Survived", plot_kws=dict(s=80, edgecolor="white", linewidth=2.5))
 #@@ play with these parameters, how to research what is available? think, search
 
 
 # can we drop some (more) variables?
 rTrain = rTrain.drop(columns=['PassengerId'])
-sns.pairplot(rTrain.loc[~AgeCond], kind = "scatter", hue="Survived", markers=["o","s"], palette = "Set2")
+sns.pairplot(rTrain.loc[~AgeCond], kind="scatter", hue="Survived", markers=["o", "s"], palette="Set2")
 
 #%% Using seaborn for nicer boxplots
 sns.boxplot(rTrain['Age'])
@@ -269,16 +270,16 @@ sns.boxenplot(rTrain['Age'])
 #%% Pairwise & simple regression plotting
 
 #plot(Survived ~ Fare + Pclass, data=rTrain)    # R version
-sns.catplot(x = 'Fare', y = 'Pclass', hue = 'Survived', data = rTrain)
-sns.catplot(x = 'Fare', y = 'Pclass', hue = 'Survived', data = rTrain, kind='violin')
+sns.catplot(x='Fare', y='Pclass', hue='Survived', data=rTrain)
+sns.catplot(x='Fare', y='Pclass', hue='Survived', data=rTrain, kind='violin')
 # "violin" is not very helpful here, due to the data - but keep it in mind for later...
 
 #@@@@ fix catplot
 sns.lmplot()
 # linear regression plots - in one plot
-sns.lmplot(x = 'Fare', y = 'Pclass', hue = 'Survived', data = rTrain)
+sns.lmplot(x='Fare', y='Pclass', hue='Survived', data=rTrain)
 # linear regression plots - in two side-by-side plots
-sns.lmplot(x = 'Fare', y = 'Pclass', col = 'Survived', data = rTrain)
+sns.lmplot(x='Fare', y='Pclass', col='Survived', data=rTrain)
 #sns.catplot(rTrain['Fare'], rTrain['Pclass'], hue=rTrain['Survived'])
 #@@@@ complete this one too
 x = sns.pairplot(rTrain, hue='Survived', x_vars='Fare', y_vars='Pclass')
@@ -378,14 +379,14 @@ sns.distplot(rTrain.Age)
 # option 1
 testList.index(max(testList)) # does this make sense?
 # option 3
-[i for i,j in enumerate(testList) if j==max(testList)]
+[i for i, j in enumerate(testList) if j == max(testList)]
 # which one do you like?
 
 # rerun above after extending the list with an extra (max) value
 testList += [4]
 testList
 testList.index(max(testList)) # does this make sense?
-[i for i,j in enumerate(testList) if j==max(testList)]
+[i for i, j in enumerate(testList) if j == max(testList)]
 # now which one do you like? Are these equivalent?
 
 #%% Preview / more informations about Lesson 3...

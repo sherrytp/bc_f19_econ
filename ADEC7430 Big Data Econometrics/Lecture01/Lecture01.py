@@ -3,7 +3,7 @@ import os
 from collections import Counter
 from scipy.stats import mode
 
-projFld = "C:/Users/RV/Documents/Teaching/2019_01_Spring/ADEC7430_Spring2019/Lecture02"
+projFld = "C:/Users/RV/Documents/Teaching/2019_01_Spring/ADEC7430_Spring2019/Lecture01"
 codeFld = os.path.join(projFld, "PyCode")
 fnsFld = os.path.join(codeFld, "_Functions")
 outputFld = os.path.join(projFld, "Output")
