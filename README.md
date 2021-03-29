@@ -23,3 +23,22 @@ Garrett Grolemund and Hadley Wickham. (2017)
 Gareth James, Daniela Witten, Trevor Hastie and Robert Tibshirani. (2009) 
 
 4. NABE([National Association for Business Economics](https://www.nabe.com/)) consists of seminar notes that I attended.
+
+5. http://www-bcf.usc.edu/~gareth/ISL/ISLR%20Seventh%20Printing.pdf     James G., Witten, D., Hastie, T., Tibshirani R. 2013. An Introduction to Statistical Learning with Applications in R. 7th Ed.
+Abbreviation: ISLR
+
+6. http://www.deeplearningbook.org/     Goodfellow I., Bengio Y., Courville A. 2016. Deep Learning. MIT Press.
+Abbreviation: DL
+ 
+## Textbooks & Suggested Readings
+* https://tryolabs.com/blog/2017/08/30/object-detection-an-overview-in-the-age-of-deep-learning/ (Links to an external site.)
+
+* https://blog.data.gov.sg/how-we-caught-the-circle-line-rogue-train-with-data-79405c86ab6a (Links to an external site.)
+
+* https://machinelearningmastery.com/a-tour-of-machine-learning-algorithms/ (Links to an external site.)
+
+* https://www.vox.com/science-and-health/2017/7/31/16021654/p-values-statistical-significance-redefine-0005 (Links to an external site.)
+
+* https://www.statisticsdonewrong.com/index.html (Links to an external site.)
+
+* https://papers.nips.cc/paper/5656-hidden-technical-debt-in-machine-learning-systems.pdf (Links to an external site.)
