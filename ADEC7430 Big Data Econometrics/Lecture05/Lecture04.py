@@ -14,9 +14,9 @@ import datetime as DT
 import matplotlib.pyplot as plt   # must have for 3D plots 
 
 #%%
-projFld = "/Users/apple/Desktop/ADEC7430 Big Data Econometrics/Lecture03"
+projFld = "C:/Users/RV/Documents/Teaching/2019_01_Spring/ADEC7430_Spring2019/Lecture03"
 codeFld = os.path.join(projFld, "PyCode")
-fnsFld = os.path.join(codeFld,"_Functions")
+fnsFld = os.path.join(codeFld, "_Functions")
 outputFld = os.path.join(projFld, "Output")
 rawDataFld = os.path.join(projFld, "RawData")
 savedDataFld = os.path.join(projFld, "SavedData")
@@ -25,12 +25,11 @@ savedDataFld = os.path.join(projFld, "SavedData")
 #==============================================================================
 # Multiple Linear Regression
 #==============================================================================
-# Assumptions...
-# ... and what do they mean?
+# Assumptions... and what do they mean?
 Rpdata = pd.read_csv(os.path.join(rawDataFld, "alr4_Rpdata.csv"))
 
 import statsmodels.api as sm
-lmmodel = sm.OLS(Rpdata["y"], Rpdata[["x1","x2","x3","x4","x5","x6"]]).fit()
+lmmodel = sm.OLS(Rpdata["y"], Rpdata[["x1", "x2", "x3", "x4", "x5", "x6"]]).fit()
 
 # does this look like a good model (numerically speaking)?
 lmmodel.summary()    
@@ -40,42 +39,38 @@ lmmodel_fitted_y = lmmodel.fittedvalues
 lmmodel_residuals = lmmodel.resid
 
 import seaborn as sns
-sns.residplot(lmmodel_fitted_y, 'y', data=Rpdata, lowess = True)
+sns.residplot(lmmodel_fitted_y, 'y', data=Rpdata, lowess=True)
 # Uh-oh! The residuals are not random! Or are they? What makes them non-random?
 # Participate in the online discussion on randomness!
 # Interesting page: https://www4.stat.ncsu.edu/~stefanski/nsf_supported/hidden_images/stat_res_plots.html
-
-# HW follow up with comments on what is randomness, and how is this relevant to our analysis ????????????
-
+# HW follow up with comments on what is randomness, and how is this relevant to our analysis?
 #%% Back to Titanic data
 # load dataset for training - don't forget to copy it from Lecture02/SavedData
 rTrainFile = os.path.join(savedDataFld, "rTrain.pkl")
 rTrain = pd.read_pickle(rTrainFile)
-rTrain.shape
+print(rTrain.shape)
 #%% let's clean up a bit the data
-rTrain.dtypes
+print(rTrain.dtypes)
 pd.isnull(rTrain).astype(int).aggregate(sum)
-pd.isnull(rTrain).astype(int).aggregate(sum, axis = 0)
+pd.isnull(rTrain).astype(int).aggregate(sum, axis=0)
 
 # this is a matrix, with 2 dimensions: rows and columns
-# rows are axis = 0 (the first dimension), columns are axis = 1 (the second dimension)
-#???????????????/ so "aggregate"
+# rows are axis = 0 (the first dimension), columns are axis = 1 (the second dimension)   - so "aggregate"
 
 # drop some variables:
 # in the absence of cabin location/map, the cabin (number) is hard to link to survival outcomes
 # moreover there are 687 missings out of 891 records - a bit too much to "impute"...
 
-#%%
-# reusing the code from Lecture 02...
+#%%  reusing the code from Lecture 02...
 import scipy
 agecond = rTrain.Age.isnull()
 rTrain_Age_Mode = scipy.stats.mode(rTrain.loc[~agecond].Age)
-rTrain_Age_Mode # we only need the mode, let's extract it
-rTrain_Age_Mode.mode # almost there, just need the value from inside the array
+print(rTrain_Age_Mode) # we only need the mode, let's extract it
+print(rTrain_Age_Mode.mode) # almost there, just need the value from inside the array
 type(rTrain_Age_Mode)
-rTrain_Age_Mode.mode[0] # finally...
+print(rTrain_Age_Mode.mode[0]) # finally...
 rTrain_Age_Mode = rTrain_Age_Mode.mode[0] # yep, we keep only the relevant value
-rTrain_Age_Mode
+print(rTrain_Age_Mode)
 
 #%% now impute... but let's keep track of where we imputed, eh?
 rTrain['Age_imputed'] = 0
@@ -88,11 +83,11 @@ rTrain.loc[agecond, 'Age'] = rTrain_Age_Mode
 sns.distplot(rTrain.Age)
 
 #%% how about Embarked?
-rTrain.loc[pd.isnull(rTrain.Embarked)]
+print(rTrain.loc[pd.isnull(rTrain.Embarked)])
 rTrain.loc[pd.isnull(rTrain.Embarked)].drop(columns={'Survived','Pclass','Embarked','Fare','Age_imputed'})
     # only drop from data viewing but not acutally drop the variables off the database 
 # hmm - same ticket, seem like mother/daughter or so, same cabin, same ticket price
-pd.crosstab(rTrain['Embarked'],rTrain['Pclass'])
+pd.crosstab(rTrain['Embarked'], rTrain['Pclass'])
 # most first class passengers embarked in S - let's assign them there (other choices available)
 rTrain.loc[pd.isnull(rTrain.Embarked), 'Embarked'] = 'S'
 
@@ -100,7 +95,7 @@ rTrain.loc[pd.isnull(rTrain.Embarked), 'Embarked'] = 'S'
 rTrain = rTrain.drop(columns={'PassengerId', 'Cabin'})
 
 # check...
-rTrain.dtypes
+print(rTrain.dtypes)
 pd.isnull(rTrain).astype(int).aggregate(sum)
 rTrain.Ticket.value_counts()
 # I'll drop ticket as well...
@@ -117,21 +112,21 @@ import sklearn.preprocessing
 from sklearn.linear_model import LogisticRegression as LogReg
 
 data = rTrain.copy()
-cat_vars=['Sex','Embarked']
+cat_vars=['Sex', 'Embarked']
 for var in cat_vars:
-    cat_list='var'+'_'+var
+    cat_list = 'var'+'_'+var
     cat_list = pd.get_dummies(data[var], prefix=var)  # this creates dummy variables from a categorical/characteristic variable 
 # create a list of var_blabla, and go to the database "rTrain", pick up the variables in Embarked and fix them there. 
 # eg. Embarked_C: ..Embarked_Q... 
-    data1=data.join(cat_list)
-    data=data1
+    data1 = data.join(cat_list)
+    data = data1
 
 # drop previous Embarked column 
-data_vars=data.columns.values.tolist()
-to_keep=[i for i in data_vars if i not in cat_vars]
+data_vars = data.columns.values.tolist()
+to_keep = [i for i in data_vars if i not in cat_vars]
 data = data[to_keep].copy()
 
-data.dtypes
+print(data.dtypes)
 X = data.drop(columns={'Survived'})
 y = data['Survived']
 logRegM = LogReg(random_state = 0).fit(X,y)
@@ -174,7 +169,7 @@ LabEnc().fit(rTrain["Embarked"]).transform(rTrain['Embarked'])
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA
 from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis as QDA
 
-LDAm = LDA().fit(X,y) # see the warning?
+LDAm = LDA().fit(X, y) # see the warning?
 # drop columns known to be collinear
 badcols = ['Sex_male', 'Embarked_S']
 Xg = X.drop(columns=badcols)

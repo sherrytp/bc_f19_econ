@@ -19,17 +19,12 @@ from sklearn.metrics import confusion_matrix as skm_conf_mat
 #%%
 projFld = "C:/Users/RV/Documents/Teaching/2019_01_Spring/ADEC7430_Spring2019/Lecture07"
 codeFld = os.path.join(projFld, "PyCode")
-fnsFld = os.path.join(codeFld,"_Functions")
+fnsFld = os.path.join(codeFld, "_Functions")
 outputFld = os.path.join(projFld, "Output")
 rawDataFld = os.path.join(projFld, "RawData")
 savedDataFld = os.path.join(projFld, "SavedData")
 
-fnList = [
-         "fn_logMyInfo"
-        ,"fn_confusionMatrixInfo"
-        ,"fn_MakeDummies"
-        ,"fn_InfoFromTree"
-        ] 
+fnList = ["fn_logMyInfo", "fn_confusionMatrixInfo", "fn_MakeDummies", "fn_InfoFromTree"]
 for fn in fnList:
     exec(open(os.path.join(fnsFld, fn + ".py")).read())
 
@@ -43,7 +38,7 @@ Carseats.head()
 Carseats.describe() #
 # @@RV how to emulate str(Carseats)
 Carseats.describe(include='all') #full listing, including character columns
-Carseats.dtypes
+print(Carseats.dtypes)
 
 # split Carseats data into 70-30
 random.seed(2019)
@@ -52,24 +47,20 @@ rndindex = [True if x < 0.7 else False for x in rndindex]
 
 # transform problem into a classification problem, predicting Sales > 8, not actual Sales
 Carseats['High'] = "Yes"
-Carseats.loc[Carseats['Sales']<=8, "High"] = "No"
+Carseats.loc[Carseats['Sales'] <= 8, "High"] = "No"
 Carseats.High.value_counts()
 
 Carseats_train = Carseats.loc[rndindex]
 Carseats_test = Carseats.loc[[not x for x in rndindex]]
 
 #%% exploration step
-
 # base this solely on Carseats_train
-
 #sapply(Carseats_train, function(x) sum(is.na(x))) # R version
 pd.isnull(Carseats_train).astype(int).aggregate(sum, axis=0) # Python version
-
 #@@ Think ahead: what to do if we have missings in the (future) test datasets?
 #@@ - store the "mode" (or any other measure we want) to be reused for test data
 #@@ - must go through each variable, and collect one value that will be the default for any missings going forward
 #@@ - this is independent of whether there are actual missing in the training data or not
-
 # we must exit this step with defaultsForMissingVariablesFromTraining - a dictionary of variable<->fill-in value
 
 
@@ -79,8 +70,9 @@ def fn_GetModeOfVars(dsin):
         tdict.update({tvar:scipy.stats.mode(dsin[tvar]).mode[0]})
         #Note: the only new thing here is "adding to" (updating) a dictionary; make sure you understand what the line above does
     return(tdict)
-defaultsForMissingVariablesFromTraining  = fn_GetModeOfVars(Carseats_train)
 
+
+defaultsForMissingVariablesFromTraining  = fn_GetModeOfVars(Carseats_train)
 #%% data prep step
 
 def prepMyData(whichData, useVars=None, defaultsForMissingVariables=None, varsToDummies=None):
