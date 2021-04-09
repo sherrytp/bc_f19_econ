@@ -10,6 +10,8 @@ Everything shown under this folder is credited to STP. If you would like to use 
 
 * Real Analysis are consist of written homework assignments typed in LaTex.
 
+* RPorject, including supportive R scripts for beginners' learning. Please contact if you want to cite or use for business purposes. 
+
 * qProject, including some homework, research, and interview projects, which is kept just for my own record, pls do not check or quote.   
 
 ## Reference 
