@@ -1,5 +1,129 @@
-# SQLZOO   
-https://sqlzoo.net/wiki 
+# [MODE SQL](https://mode.com/sql-tutorial/introduction-to-sql/) 
+> is also another good resource to learn, where explains in detail. 
+
+
+# DATA SCHOOL SQL Practice 
+> Simple and quick type check to test understanding. Even though I don't find the submit/check working, I personally feel *Hint* button can be used as answers. Feel free to discuss with me if you feel there is any improvement. 
+
+### [Basic](https://dataschool.com/learn-sql/basic-practice/)
+1. `SELECT * FROM albums LIMIT 8`
+2. `SELECT * FROM tracks LIMIT 21 OFFSET 11`
+3. `SELECT * FROM artists LIMIT 41 OFFSET 8`
+4. `SELECT names FROM artists`
+5. `SELECT names FROM artists ORDER BY names DESC`
+6. `SELECT names FROM artists ORDER BY names DESC LIMIT 4`
+7. `SELECT * FROM tracks ORDER BY milliseconds DESC LIMIT 20`
+
+### [MidLevel](https://dataschool.com/learn-sql/mid-level-practice/)
+1. `SELECT * 
+FROM tracks
+WHERE milliseconds > 300000`
+
+2. `SELECT id 
+FROM artists
+WHERE name = "Miles Davis"`
+
+3. `SELECT * 
+FROM tracks 
+WHERE genre_id = 20
+ORDER BY milliseconds DESC`
+
+4. `SELECT name
+FROM artists
+WHERE 98 >= id >= 55` 
+
+5. `SELECT * 
+FROM tracks 
+WHERE genre_ids != 15 OR genre_ids != 18`
+
+6. `SELECT * 
+FROM tracks 
+WHERE composer = "Miles Davis"`
+
+7. `SELECT * 
+FROM tracks
+WHERE composer LIKE "%Miles Davis%"`
+
+8. `SELECT name
+FROM tracks
+WHERE name LIKE "%wild%"`
+
+9. `SELECT COUNT(*)
+FROM tracks
+WHERE composer LIKE "%Little Richard"`
+
+10. `SELECT COUNT(composer)
+FROM tracks 
+HAVING genre_id = 1`
+
+11. `SELECT COUNT(DISTINCT composer)
+FROM tracks
+HAVING genre_id = 1`
+
+12. `SELECT AVG(length)
+FROM tracks 
+WHERE genre_ids = 5 OR genre_ids = 7, genre_ids = 10`
+
+13. `SELECT genre_ids, COUNT(*)
+FROM tracks 
+GROUP BY genre_ids`
+
+14. `SELECT genre_id, album_id, COUNT(*) as count
+FROM tracks
+GROUP BY genre_id, album_id`
+
+15. `SELECT genre_id, album_id, COUNT(*) as count
+FROM tracks
+GROUP BY genre_id, album_id
+ORDER BY album_id DESC`
+
+16. `SELECT album_id, genre_id, COUNT(*) as count
+FROM tracks
+GROUP BY album_id, genre_id
+ORDER album_id, genre_id`
+
+17. `SELECT * 
+FROM tracks t
+LEFT JOIN albums a
+ON t.album_id = a.id 
+LIMIT 5`
+
+18. `SELECT * 
+FROM albums
+LEFT JOIN artists 
+ON albums.artist_id = artists.id
+LIMIT 5`
+
+19. `SELECT customer_id, SUM(total)
+FROM invoices
+GROUP BY customer_id`
+
+20. `SELECT company, SUM(total)
+FROM customers c
+LEFT JOIN invoices i
+ON i.customer_id = c.id
+GROUP BY c.company`
+
+21. `SELECT first_names, TO_CHAR(birth_dates, 'Month DD, YYYYY') 
+FROM employees`
+
+22. `SELECT first_names, TO_CHAR(birth_dates, 'Mon FMDDth, YYYY') 
+FROM employees `
+
+23. `SELECT first_names, TO_CHAR(birth_dates, 'MM/DD/YYYY') 
+FROM employees`
+
+24. `SELECT TO_CHAR(invoice_date, '"Y"YYYY') AS "Year", SUM(total)
+FROM invoices
+GROUP BY "Year"`
+
+25. `SELECT TO_CHAR(invoice_date, "YYYY-MM") AS "Month", SUM(invoices)
+FROM invoices
+GROUP BY "Month"`
+
+
+# [SQLZOO](https://sqlzoo.net/wiki)
+> Good examples and practice quiz following. 
 
 ### Select Quiz 
 1. Select from world: 
