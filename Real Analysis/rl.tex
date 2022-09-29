@@ -1,0 +1,129 @@
+\section{Reinforcement Learning}
+Mainly from OpenAIs \textit{Introduction to RL} \cite{rl-openai}.
+\subsection{Key Concepts and Terminology}
+\begin{figure}
+\centering
+\includegraphics[scale=0.8]{rl/agent-environment}
+\caption{Agent-environment interaction loop.}\label{fig:agent-env}
+\end{figure}
+
+\paragraph{State $s$} Complete description of world state.
+
+\paragraph{Observation $o$} (partial) description of the world state (depends if environment is \textit{fully} or \textit{partially} observed.
+
+\paragraph{Action space} Set of valid actions in a given environment. Can be either \textit{discrete} or \textit{continuous}.
+
+\paragraph{Policy $a_t$} Rule used by an agent to decide what actions to take. Can be eiter deterministic ($a_t = \mu_{\theta}(s_t)$) or stochastic ($a_t \sim \pi_{\theta}(\cdot|s_t)$), where $\theta$ indicates used function parameters. Most common kinds of stochastic policies:
+\begin{enumerate}
+    \item
+        \textbf{Categorial} (for discrete AS): like a classifier over discrete actions.
+        \begin{itemize} 
+            \item
+                Sampling: Straight forward
+            \item
+                Log-Likelihood: $log_{\pi_{\theta}}(a|s) = log[P_{\theta}(s)]_a$, where $P_{\theta}(s)$ is the last layer of probabilities.
+        \end{itemize}
+    \item
+        \textbf{Diagonal Gaussian} (for continuous AS): has a neural network that maps from observations to mean actions, $\mu_{\theta}(s)$, describing a multivariate normal distribution with mean vector $\mu_{\theta}(s)$ and diagonal covariance matrix $\Sigma$ (log-vector of standard deviations, either hyperparameter or also computed by neural network).
+        \begin{itemize}
+            \item
+                Sampling: With $z \sim \mathcal{N}(0, I)$, $a = \mu_{\theta}(s) + \sigma_{\theta}(x) \odot z$
+            \item
+                Log-Likelihood: See \cite{rl-openai}
+        \end{itemize}
+\end{enumerate}
+\paragraph{Trajectories (episodes, rollouts)} Sequence of states and actions in the world, $\tau = (s_0, a_0, s_1, a_1, \dots)$. $s_0$ is randomly sampled from \textbf{start-state-distribution} $\rho_0(\cdot)$. State transitions follow the natural laws of the environment (can also be either deterministic or stochastic) and depend only on the most recent $a_t$ and the last state $s_t$.
+
+\paragraph{Reward and Return} $r_t$ is either $R(s_t, a_t, s{t+1})$, $R(s_t)$ or $R(s_t, a_t)$ (different dependencies). The goal of the agent is to maximize some notion of cumulative reward over a trajectory.
+\begin{enumerate}
+    \item
+        Finite-horizon undiscounted return: $R(\tau) = \sum_{t=0}^T r_t$
+    \item
+        Infinite-horizon discounted return: $R(\tau) = \sum_{t=0}^{\infty} \gamma^t r_t$. 'Cash now is better than cash later', with discount factor and under reasonable conditions the infinite sum converges.
+\end{enumerate}
+
+\paragraph{The RL Problem} The goal in RL is to select a policy which maximizes \textbf{expected return} when the agent acts according to it. Suppose both environment transitions and policy are stochastic, probability of a $T$-step trajectory is: 
+$$P(\tau | \pi) = \rho_0(s_0) \prod_{t=0}^{T-1} P(s_{t+1} | s_t, a_t) \pi(a_t | s_t).$$
+The exted return $J(\pi)$ (for whichever measure) is then: 
+$$J(\pi) = \int_{\tau} P(\tau | \pi) R(\tau) = E_{\tau \sim \pi}[R(\tau)].$$
+The central optimization problem in RL can be expressed by:
+$$\pi^* = \argmax_{\pi} J(\pi).$$
+
+\paragraph{Value functions} It is often useful to know the value (expected return, infinite discounted horizon) of a state, or state-action pair, after which acted according to a particular policy. 
+
+\begin{tabular}{ll}
+    \textbf{On-Policy Value Function} & \( V^{\pi}(s)=\underset{\tau \sim \pi}{\mathrm{E}}\left[R(\tau) | s_{0}=s\right] \) \\
+    \textbf{On-Policy Action-Value Function} & \( Q^{\pi}(s, a)=\underset{\tau \sim \pi}{\mathrm{E}}\left[R(\tau) | s_{0}=s, a_{0}=a\right] \) \\
+    \textbf{Optimal Value Function} & \( V^{*}(s)=\max _{\pi} \underset{\tau \sim \pi}{\mathrm{E}}\left[R(\tau) | s_{0}=s\right] \) \\
+    \textbf{Optimal Action-Value Function} & \( Q^{*}(s, a)=\max _{\pi} \underset{\tau \sim \pi}{\mathrm{E}}\left[R(\tau) | s_{0}=s, a_{0}=a\right] \)
+\end{tabular}
+
+Important key connections between value and action-value function:
+\begin{enumerate}
+    \item
+        $V^{\pi}(s) = E_{a \sim \pi} [Q^{\pi}(s,a)]$
+    \item
+        $V^*(s) = \max_{a} Q^*(s,a)$
+\end{enumerate}
+\colorbox{red}{Prove}
+
+\paragraph{Optimal Q-Function and Optimal Action}
+The optimal policy in $s$ will select whichever action maximizes the expected return from starting in $s$. As a result, if we have $Q^*$, we can directly obtain the optimal action, $a^*(s)$ via
+$$a^*(x) = \argmax_{a} Q^*(s,a).$$
+
+\paragraph{Bellman Equations}
+Value functions follow self-consistency equations call Bellman equations and can be interpreted as something like: \textit{The value of your starting point is the reward you expect to get from being there, plus the value of wherever you land next.}
+
+\begin{tabular}{ll}
+    \textbf{On-Policy Value Function} &\( V^{\pi}(s)=\underset{a \sim \pi \atop s^{\prime} \sim P}{\operatorname{E}}\left[r(s, a)+\gamma V^{\pi}\left(s^{\prime}\right)\right] \) \\
+    \textbf{On-Policy Action-Value Function} &\( Q^{\pi}(s, a)=\underset{s^{\prime} \sim P}{\mathrm{E}}\left[r(s, a)+\gamma \underset{a^{\prime}\sim \pi}{\operatorname{E}} \left[Q^{\pi}\left(s^{\prime}, a^{\prime}\right)\right]\right] \) \\
+    \textbf{Optimal Value Function} & \( V^{*}(s)=\underset{a}{\max} \underset{s^{\prime}\sim P}{\operatorname{E}} \left[r(s, a)+\gamma V^{*}\left(s^{\prime}\right)\right] \) \\
+    \textbf{Optimal Action-Value Function} &\( Q^{*}(s, a)=\underset{s^{\prime} \sim P}{\mathrm{E}}\left[r(s, a)+\gamma \underset{a^{\prime}}{\max}\, Q^{*}\left(s^{\prime}, a^{\prime}\right)\right] \) 
+\end{tabular}
+
+The right-hand side of the Bellman equation (reward-plus-next-value) is called "Bellman backup".
+
+\paragraph{Advantage Function}
+Quantifies, how much better an action is than others on average, i.e. over randomly selecting an action according to $\pi$.
+
+$$ A^{\pi}(s, a)=Q^{\pi}(s, a)-V^{\pi}(s) $$
+
+\paragraph{Formalism}
+Standard mathmatical formalism to describe agents environment: \textbf{Markov Decision Process} (MDP).
+
+A MDP is a 5-tuple, \( \left\langle S, A, R, P, \rho_{0}\right\rangle \):
+\begin{itemize}
+    \item \(S\): Set of states
+    \item \(A\): Set of valid actions
+    \item \(R\): \( S \times A \times S \ \rightarrow \mathbb{R}\) is a reward function
+    \item \(P\): \( S \times A \rightarrow P(S) \) is the transition probability function \(P (s' | s,a)\)
+    \item \(\rho_0\): starting state distribution
+\end{itemize}
+
+\subsection{Taxonomy}
+\paragraph{Model-Free vs Model-Based RL} 
+Question of whether the agent has access to (or learns) a model of the environment, i.e. a function which predicts state transitions and rewards.
+
+\paragraph{What to Learn:} policies (stochastic or deterministic), action-value functions (Q-functions), value functions, and/or envirnment models
+
+\subsubsection{Model-Free RL}
+\paragraph{Policy Optimization} Represent a policy explicitly as \(\pi_{\theta}(a |s)\), optimized by gradient ascent on performance objective \(J(\pi_{\theta})\). Almost always optimized on-policy and usually involves learning an approximator $V_{\phi}(s)$.
+
+Examples: A2C/A3C or PPO
+
+Pro: Directly optimize for the thing you want \(\rightarrow\) stable and reliable.
+
+\paragraph{Q-Learning} Learn an approximator \(Q_{\theta}(s,a)\) for the optimal action-value function \(Q^*(s,a)\). Almost always off-policy, i.e. each update can use data collected at any point during training.
+
+Examples: DQN or C51
+
+Pro: Substantially more sample efficient
+Con: Indirectly optimize agent performance \(\rightarrow\) many failure modes, less stable.
+
+\paragraph{Inbetween Policy Optimization and Q-Learning}
+Algorithms that live on this spectrum are able to carefully trade-off between their strengths and weaknesses.
+
+Examples: DDPG, SAC
+
+\subsubsection{Model-Based RL}
+\colorbox{red}{TODO}
