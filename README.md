@@ -37,12 +37,4 @@ Abbreviation: DL
 
 * https://tryolabs.com/blog/2017/08/30/object-detection-an-overview-in-the-age-of-deep-learning/ 
 
-* https://blog.data.gov.sg/how-we-caught-the-circle-line-rogue-train-with-data-79405c86ab6a 
-
-* https://machinelearningmastery.com/a-tour-of-machine-learning-algorithms/ 
-
-* https://www.vox.com/science-and-health/2017/7/31/16021654/p-values-statistical-significance-redefine-0005 
-
-* https://www.statisticsdonewrong.com/index.html 
-
 * https://papers.nips.cc/paper/5656-hidden-technical-debt-in-machine-learning-systems.pdf 
